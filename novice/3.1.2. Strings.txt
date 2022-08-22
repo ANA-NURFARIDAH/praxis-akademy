@@ -1,0 +1,209 @@
+>>>
+>>> 2+2
+4
+>>> 50 - 5*6
+20
+>>> (50 - 5*6) / 4
+5.0
+>>> 8 / 5 # division always returns a floating point number
+1.6
+>>>
+>>> 17 / 3 # classic division returns a float
+5.666666666666667
+>>>
+>>> 17 // 3 # floor divison discards the fractional part
+5
+>>> 17 % 3 # the % operating returns the remainder of the division
+2
+>>> 5 * 3 + 2 # floored quotient * divisor + remainder
+17
+>>>
+>>> 5 ** 2 # squared
+25
+>>> 2 ** 7 # 2 to the power of 7
+128
+>>>
+>>> width = 20
+>>> height = 5 * 9
+>>> width * height
+900
+>>>
+>>> n # try to access an underfined variable
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'n' is not defined
+>>>
+>>> 4 * 3.75 - 1
+14.0
+>>>
+>>> tax = 12.5 / 100
+>>> price = 100.50
+>>> price * tax
+12.5625
+>>> price + _
+113.0625
+>>> round(_,2)
+113.06
+>>> 'spam eggs' # single quotes
+'spam eggs'
+>>> 'doesn\'t' # use \' to escape the single quote...
+"doesn't"
+>>> "doesn't" #...or use double quotes instead
+"doesn't"
+>>> '"Yes," they said.'
+'"Yes," they said.'
+>>> "\"Yes,\" they said."
+'"Yes," they said.'
+>>> '"Isn\'t," they said.'
+'"Isn\'t," they said.'
+>>> '"Isn\'t," they said.'
+'"Isn\'t," they said.'
+>>> print('"Isn\'t," they said.')
+"Isn't," they said.
+>>> s = 'First line.\nSecond line.' # \n means newline
+>>> s # without print(), \n is included in the output
+'First line.\nSecond line.'
+>>> print(s) # with print(), \n produces a new line
+First line.
+Second line.
+>>>
+>>> print('C:\some\name') # here \n means newline!
+C:\some
+ame
+>>> print(r'C:some\name') # note the r before the quote
+C:some\name
+>>>
+>>> print("""\
+... Usage: thingy [OPTINS]
+...     -h
+...     -h hostname
+...
+... print("""\
+... Usage: thingy [OPTIONS]
+  File "<stdin>", line 1
+    print("""\
+          ^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+>>>      -h                        Display this usage message
+  File "<stdin>", line 1
+    -h                        Display this usage message
+IndentationError: unexpected indent
+>>>      -H hostname               Hostname to connect to
+  File "<stdin>", line 1
+    -H hostname               Hostname to connect to
+IndentationError: unexpected indent
+>>> """)
+...
+... print("""\
+... Usage: thingy [OPTIONS]
+  File "<stdin>", line 4
+    Usage: thingy [OPTIONS]
+    ^^^^^
+SyntaxError: invalid syntax
+>>>      -h                        Display this usage message
+  File "<stdin>", line 1
+    -h                        Display this usage message
+IndentationError: unexpected indent
+>>>      -H hostname               Hostname to connect to
+  File "<stdin>", line 1
+    -H hostname               Hostname to connect to
+IndentationError: unexpected indent
+>>> """)
+...
+... print("""\
+... usage: thingy [OPTIONS]
+  File "<stdin>", line 4
+    usage: thingy [OPTIONS]
+    ^^^^^
+SyntaxError: invalid syntax
+>>>
+>>> print("""\
+... Usage: thingy [OPTIONS]
+...      -h                        Display this usage message
+...      -H hostname               Hostname to connect to
+... """)
+Usage: thingy [OPTIONS]
+     -h                        Display this usage message
+     -H hostname               Hostname to connect to
+
+>>> 'Py' 'thon'
+'Python'
+>>>
+>>> text = ('Put several string within parentheses '
+...             'to have them joined together.')
+>>> text
+'Put several string within parentheses to have them joined together.'
+>>>
+>>> prefix = 'Py'
+>>> prefix 'thon' # can't concatenate a variable and a string literal
+  File "<stdin>", line 1
+    prefix 'thon' # can't concatenate a variable and a string literal
+           ^^^^^^
+SyntaxError: invalid syntax
+>>> ('un' * 3) 'ium'
+  File "<stdin>", line 1
+    ('un' * 3) 'ium'
+               ^^^^^
+SyntaxError: invalid syntax
+>>>
+>>> prefix + 'thon'
+'Python'
+>>>
+>>> word = 'Python'
+>>> word[0] # character in position 0
+'P'
+>>> word[5] # character in position 5
+'n'
+>>>
+>>> word[-1] # Last character
+'n'
+>>> word[-2] # second-Last character
+'o'
+>>> word[-6]
+'P'
+>>>
+>>> word[0:2] # characters from position 0 (included) to 2 (excluded)
+'Py'
+>>> word[2:5] # character from position 2 (included) to 5 (exluded)
+'tho'
+>>>
+>>> word[:2] # character from the beginning to position 2 (excluded)
+'Py'
+>>> word[4:] # character from position 4 (included) to the end
+'on'
+>>> word[-2:] # characters from the second-Last (included) to the end
+'on'
+>>>
+>>> word[:2] + word[2:]
+'Python'
+>>> word[:4] + word[4:]
+'Python'
+>>>
+>>> word[42] # the word only has 6 characters
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+>>>
+>>> word[4:42]
+'on'
+>>> word[42:]
+''
+>>>
+>>> word[0] = 'J'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+>>> word[2:] = 'py'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+>>>
+>>> 'J' + word[1:]
+'Jython'
+>>> word[:2] + 'py'
+'Pypy'
+>>>
+>>> s = 'supercalifragilisticexpialiadocious'
+>>> len(s)
+35
+>>>
