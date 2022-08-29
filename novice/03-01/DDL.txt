@@ -1,0 +1,81 @@
+bahasa deskripsi data ( DDL ) adalah sintaks untuk membuat dan memodifikasi objek database seperti tabel, indeks, dan pengguna. Pernyataan DDL mirip dengan bahasa pemrograman komputer untuk mendefinisikan struktur data , terutama skema database . Contoh umum pernyataan DDL termasuk CREATE, ALTER, dan DROP.
+
+
+Isi
+1	Sejarah
+2	Bahasa Kueri Terstruktur (SQL)
+2.1	BUAT pernyataan
+2.1.1	pernyataan BUAT TABEL
+2.2	DROP pernyataan
+2.3	ALTER pernyataan
+2.4	Pernyataan TRUNCATE
+2.5	Pernyataan integritas referensial
+3	Bahasa lainnya
+4	Lihat juga
+5	Referensi
+6	Tautan eksternal
+Sejarah 
+Konsep bahasa definisi data dan namanya pertama kali diperkenalkan dalam kaitannya dengan model basis data Codasyl , di mana skema basis data ditulis dalam sintaks bahasa yang menggambarkan catatan , bidang , dan set model data pengguna . [1] Kemudian digunakan untuk merujuk ke subset dari Structured Query Language (SQL) untuk mendeklarasikan tabel , kolom, tipe data, dan batasan . SQL-92 memperkenalkan bahasa manipulasi skema dan tabel informasi skema ke skema kueri. [2]Tabel informasi ini ditetapkan sebagai SQL/Schemata di SQL:2003 . Istilah DDL juga digunakan dalam pengertian umum untuk merujuk pada bahasa formal apa pun untuk menggambarkan struktur data atau informasi.
+
+Bahasa Kueri Terstruktur (SQL) 
+Banyak bahasa deskripsi data menggunakan sintaks deklaratif untuk mendefinisikan kolom dan tipe data. Structured Query Language (SQL), bagaimanapun, menggunakan kumpulan kata kerja imperatif yang efeknya adalah untuk memodifikasi skema database dengan menambahkan, mengubah, atau menghapus definisi tabel atau elemen lainnya. Pernyataan ini dapat dicampur dengan bebas dengan pernyataan SQL lainnya, membuat DDL bukan bahasa yang terpisah.
+
+BUAT pernyataan 
+Perintah create digunakan untuk membuat database, tabel, indeks, atau prosedur tersimpan baru .
+
+Pernyataan CREATE dalam SQL membuat komponen dalam sistem manajemen basis data relasional (RDBMS). Dalam spesifikasi SQL 1992, jenis komponen yang dapat dibuat adalah skema, tabel , tampilan , domain, kumpulan karakter , susunan , terjemahan, dan pernyataan. [2] Banyak implementasi memperluas sintaks untuk memungkinkan pembuatan elemen tambahan, seperti indeks dan profil pengguna. Beberapa sistem, seperti PostgreSQL dan SQL Server , mengizinkan CREATE , dan perintah DDL lainnya, di dalam transaksi basis datadan dengan demikian mereka dapat digulung kembali . [3] [4]
+
+pernyataan CREATE TABLE 
+Perintah CREATE yang umum digunakan adalah perintah CREATE TABLE . Penggunaan yang khas adalah:
+
+BUAT TABEL [nama tabel] ( [definisi kolom] ) [parameter tabel]
+Definisi kolom adalah:
+
+Daftar yang dipisahkan koma yang terdiri dari salah satu dari berikut ini:
+Definisi kolom: [nama kolom] [tipe data] {NULL | NOT NULL} {opsi kolom}
+Definisi kunci utama : KUNCI UTAMA ( [daftar kolom yang dipisahkan koma] )
+Batasan: {CONSTRAINT} [definisi kendala]
+Fungsionalitas khusus RDBMS
+Contoh statement untuk membuat tabel bernama employee dengan beberapa kolom adalah:
+
+CREATE  TABLE  employee  ( 
+    id             INTEGER        PRIMARY  KEY , 
+    first_name     VARCHAR ( 50 )    not  null , 
+    last_name      VARCHAR ( 75 )    not  null , 
+    mid_name       VARCHAR ( 50 )    not  null , 
+    dateofbirth    DATE           not  null 
+);
+Beberapa bentuk CREATE TABLE DDL dapat menggabungkan konstruksi seperti DML ( bahasa manipulasi data ), seperti sintaks SQL CREATE TABLE AS SELECT (CTaS). [5]
+
+DROP pernyataan 
+Pernyataan DROP menghancurkan database, tabel, indeks, atau tampilan yang ada.
+
+Pernyataan DROP dalam SQL menghapus komponen dari sistem manajemen basis data relasional (RDBMS). Jenis objek yang dapat dijatuhkan tergantung pada RDBMS mana yang digunakan, tetapi sebagian besar mendukung penghapusan tabel , pengguna , dan database . Beberapa sistem (seperti PostgreSQL ) memungkinkan DROP dan perintah DDL lainnya terjadi di dalam transaksi dan dengan demikian dibatalkan . Penggunaan tipikal hanyalah:
+
+DROP objecttype  objectname .
+Misalnya, perintah untuk menjatuhkan tabel bernama karyawan adalah:
+
+ karyawan DROP TABLE  ;
+Pernyataan DROP berbeda dari pernyataan DELETE dan TRUNCATE , karena DELETE dan TRUNCATE tidak menghapus tabel itu sendiri. Misalnya, pernyataan DELETE mungkin menghapus beberapa (atau semua) data dari tabel sementara meninggalkan tabel itu sendiri dalam database, sedangkan pernyataan DROP menghapus seluruh tabel dari database.
+
+ALTER pernyataan 
+Pernyataan ALTER memodifikasi objek database yang ada.
+
+Pernyataan ALTER dalam SQL mengubah properti objek di dalam sistem manajemen basis data relasional (RDBMS). Jenis objek yang dapat diubah tergantung pada RDBMS yang digunakan. Penggunaan yang khas adalah:
+
+ALTER parameter objecttype  objectname  .
+Misalnya, perintah untuk menambahkan (lalu menghapus) kolom bernama gelembung untuk tabel yang ada bernama sink adalah:
+
+ALTER  TABLE  wastafel  TAMBAHKAN  gelembung  INTEGER ; 
+ALTER  TABLE  sink  DROP  COLUMN  gelembung ;
+Pernyataan TRUNCATE 
+Pernyataan TRUNCATE digunakan untuk menghapus semua data dari tabel. Ini jauh lebih cepat daripada DELETE .
+
+TRUNCATE  TABLE  table_name ;
+Pernyataan integritas referensial 
+Jenis lain dari kalimat DDL dalam SQL digunakan untuk mendefinisikan hubungan integritas referensial , biasanya diimplementasikan sebagai kunci utama dan tag kunci asing di beberapa kolom tabel. Kedua pernyataan ini dapat dimasukkan dalam kalimat CREATE TABLE atau ALTER TABLE ;
+
+Bahasa lain 
+Skema XML adalah contoh DDL untuk XML .
+Skema JSON adalah contoh DDL untuk JSON .
+Skema DFDL adalah contoh DDL yang dapat menggambarkan banyak format teks dan biner.

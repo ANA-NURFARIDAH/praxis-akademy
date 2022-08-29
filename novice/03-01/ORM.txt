@@ -1,0 +1,51 @@
+Pemetaan objek-relasional ( ORM , O/RM , dan alat pemetaan O/R ) dalam ilmu komputer adalah teknik pemrograman untuk mengubah data antar tipe sistem menggunakan bahasa pemrograman berorientasi objek. Ini menciptakan, pada dasarnya, sebuah " database objek virtual " yang dapat digunakan dari dalam bahasa pemrograman. Ada paket gratis dan komersial yang tersedia yang melakukan pemetaan objek-relasional, meskipun beberapa programmer memilih untuk membangun alat ORM mereka sendiri.
+
+Dalam pemrograman berorientasi objek , tugas manajemen data bertindak pada objek yang hampir selalu bernilai non- skalar . Misalnya, pertimbangkan entri buku alamat yang mewakili satu orang bersama dengan nol atau lebih nomor telepon dan nol atau lebih alamat. Ini dapat dimodelkan dalam implementasi berorientasi objek oleh " Objek orang " dengan atribut/bidanguntuk menampung setiap item data yang terdiri dari entri: nama orang, daftar nomor telepon, dan daftar alamat. Daftar nomor telepon itu sendiri akan berisi "objek PhoneNumber" dan seterusnya. Setiap entri buku alamat tersebut diperlakukan sebagai objek tunggal oleh bahasa pemrograman (dapat direferensikan oleh variabel tunggal yang berisi pointer ke objek, misalnya). Berbagai metode dapat dikaitkan dengan objek, seperti metode untuk mengembalikan nomor telepon yang diinginkan, alamat rumah, dan sebagainya.
+
+Sebaliknya, banyak produk database populer seperti sistem manajemen database SQL (DBMS) tidak berorientasi objek dan hanya dapat menyimpan dan memanipulasi nilai skalar seperti bilangan bulat dan string yang diatur dalam tabel . Pemrogram harus mengubah nilai objek menjadi kelompok nilai yang lebih sederhana untuk disimpan dalam database (dan mengubahnya kembali saat pengambilan), atau hanya menggunakan nilai skalar sederhana di dalam program. Pemetaan objek-relasional mengimplementasikan pendekatan pertama. [1]
+
+Inti masalahnya adalah menerjemahkan representasi logis dari objek ke dalam bentuk atomisasi yang mampu disimpan dalam database sambil mempertahankan properti objek dan hubungannya sehingga dapat dimuat ulang sebagai objek saat dibutuhkan. Jika fungsi penyimpanan dan pengambilan ini diimplementasikan, objek dikatakan persisten . [1]
+
+
+Isi
+1	Ringkasan
+2	Perbandingan dengan teknik akses data tradisional
+3	Database berorientasi objek
+4	Tantangan
+5	Lihat juga
+6	Referensi
+7	Tautan eksternal
+Ikhtisar 
+Detail implementasi spesifik dari driver penyimpanan umumnya dibungkus dalam API dalam bahasa pemrograman yang digunakan, memperlihatkan metode untuk berinteraksi dengan media penyimpanan dengan cara yang lebih sederhana dan lebih sesuai dengan paradigma kode sekitarnya.
+
+Berikut ini adalah contoh sederhana, yang ditulis dalam kode C# , untuk mengeksekusi kueri yang ditulis dalam SQL menggunakan mesin basis data.
+
+var  sql  =  "PILIH id, nama_depan, nama_belakang, telepon, tanggal_lahir, jenis kelamin, usia FROM orang WHERE id = 10" ; 
+var  hasil  =  konteks . orang . DariSqlRaw ( sql ). DaftarTo (); 
+var  nama  =  hasil [ 0 ][ "nama_depan" ];
+Sebaliknya, berikut ini menggunakan API pekerjaan ORM yang memungkinkan untuk menulis kode yang secara alami memanfaatkan fitur bahasa.
+
+var  orang  =  repositori . GetPerson ( 10 ); 
+var  namadepan  =  orang . GetFirstName ();
+Kasus di atas menggunakan objek yang mewakili repositori penyimpanan dan metode objek itu. Kerangka kerja lain mungkin menyediakan kode sebagai metode statis, seperti pada contoh di bawah ini, namun metode lain mungkin tidak menerapkan sistem berorientasi objek sama sekali. Seringkali pilihan paradigma dibuat untuk kesesuaian terbaik ORM ke dalam prinsip-prinsip desain bahasa sekitarnya.
+
+var  orang  =  Orang . Dapatkan ( 10 );
+Biasanya, kerangka kerja akan mengekspos beberapa fungsi penyaringan dan kueri untuk mengakses dan memodifikasi subset dari basis penyimpanan. Kode di bawah ini menanyakan orang-orang dalam database yang nilai ID-nya '10'.
+
+var  orang  =  Orang . Dapatkan ( Orang . Properti . Id  ==  10 );
+Perbandingan dengan teknik akses data tradisional 
+Dibandingkan dengan teknik pertukaran tradisional antara bahasa berorientasi objek dan database relasional, ORM sering mengurangi jumlah kode yang perlu ditulis. [2]
+
+Kekurangan alat ORM umumnya berasal dari abstraksi tingkat tinggi yang mengaburkan apa yang sebenarnya terjadi dalam kode implementasi. Juga, ketergantungan berat pada perangkat lunak ORM telah disebut sebagai faktor utama dalam menghasilkan database yang dirancang dengan buruk. [3]
+
+Database berorientasi objek 
+Pendekatan lain adalah dengan menggunakan sistem manajemen database berorientasi objek (OODBMS) atau database berorientasi dokumen seperti database XML asli yang memberikan lebih banyak fleksibilitas dalam pemodelan data. OODBMS adalah database yang dirancang khusus untuk bekerja dengan nilai berorientasi objek. Menggunakan OODBMS menghilangkan kebutuhan untuk mengkonversi data ke dan dari bentuk SQL-nya, karena data disimpan dalam representasi objek aslinya dan hubungan diwakili secara langsung, daripada memerlukan tabel / operasi gabungan. Setara dengan ORM untuk database berorientasi dokumen disebut object-document mappers (ODMs).
+
+Database berorientasi dokumen juga mencegah pengguna dari keharusan "menghancurkan" objek ke dalam baris tabel. Banyak dari sistem ini juga mendukung bahasa kueri XQuery untuk mengambil kumpulan data.
+
+Database berorientasi objek cenderung digunakan dalam aplikasi niche yang kompleks. Salah satu argumen yang menentang penggunaan OODBMS adalah bahwa OODBMS mungkin tidak dapat mengeksekusi kueri ad-hoc, aplikasi-independen. [ rujukan? ] Untuk alasan ini, banyak programmer merasa lebih nyaman dengan sistem pemetaan objek-SQL, meskipun sebagian besar database berorientasi objek mampu memproses kueri SQL sampai batas tertentu. OODBMS lainnya menyediakan replikasi ke database SQL, sebagai sarana untuk memenuhi kebutuhan akan kueri ad-hoc, sambil mempertahankan pola kueri yang terkenal. [ rujukan? ]
+
+Tantangan 
+Berbagai kesulitan muncul ketika mempertimbangkan bagaimana mencocokkan sistem objek ke database relasional. Kesulitan-kesulitan ini disebut sebagai ketidakcocokan impedansi objek-relasional . [4]
+
+Alternatif untuk mengimplementasikan ORM adalah penggunaan bahasa prosedural asli yang disediakan dengan setiap database utama. Ini dapat dipanggil dari klien menggunakan pernyataan SQL. Pola desain Data Access Object (DAO) digunakan untuk mengabstraksi pernyataan ini dan menawarkan antarmuka berorientasi objek yang ringan ke seluruh aplikasi. 

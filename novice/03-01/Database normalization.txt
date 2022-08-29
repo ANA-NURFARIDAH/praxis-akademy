@@ -1,0 +1,365 @@
+Normalisasi basis data adalah proses penataan basis data relasional sesuai dengan serangkaian yang disebut bentuk normal untuk mengurangi redundansi data dan meningkatkan integritas data . Ini pertama kali diusulkan oleh Edgar F. Codd sebagai bagian dari model relasionalnya .
+
+Normalisasi memerlukan pengorganisasian kolom (atribut) dan tabel (relasi) dari database untuk memastikan bahwa ketergantungan mereka ditegakkan dengan benar oleh batasan integritas database. Hal ini dicapai dengan menerapkan beberapa aturan formal baik dengan proses sintesis (membuat desain database baru) atau dekomposisi (meningkatkan desain database yang sudah ada).
+
+
+Isi
+1	Tujuan
+1.1	Minimalkan desain ulang saat memperluas struktur database
+2	Bentuk normal
+3	Contoh normalisasi langkah demi langkah
+3.1	Data awal
+3.2	Memuaskan 1NF
+3.3	Memuaskan 2NF
+3.4	3NF yang memuaskan
+3.5	EKNF yang memuaskan
+3.6	Memuaskan 4NF
+3.7	ETNF yang memuaskan
+3.8	5NF yang memuaskan
+3.9	Memuaskan DKNF
+3.10	Memuaskan 6NF
+4	Lihat juga
+5	Catatan dan referensi
+6	Bacaan lebih lanjut
+7	Tautan eksternal
+Tujuan 
+Tujuan dasar dari bentuk normal pertama yang didefinisikan oleh Codd pada tahun 1970 adalah untuk mengizinkan data ditanyakan dan dimanipulasi menggunakan "subbahasa data universal" yang didasarkan pada logika orde pertama . [1] ( SQL adalah contoh dari sub-bahasa data, meskipun salah satu yang dianggap Codd sebagai cacat serius. [2] )
+
+Tujuan dari normalisasi di luar 1NF (first normal form) dikemukakan oleh Codd sebagai berikut:
+
+Untuk membebaskan kumpulan relasi dari ketergantungan penyisipan, pembaruan, dan penghapusan yang tidak diinginkan.
+Untuk mengurangi kebutuhan untuk merestrukturisasi kumpulan relasi, ketika tipe data baru diperkenalkan, dan dengan demikian meningkatkan masa pakai program aplikasi.
+Untuk membuat model relasional lebih informatif bagi pengguna.
+Untuk membuat kumpulan relasi netral terhadap statistik kueri, di mana statistik ini dapat berubah seiring berjalannya waktu.
+—  EF Codd, "Normalisasi Lebih Lanjut dari Model Relasional Basis Data" [3]
+
+Sebuah anomali pembaruan . Karyawan 519 ditampilkan memiliki alamat yang berbeda pada catatan yang berbeda.
+
+Anomali penyisipan . Sampai anggota fakultas baru, Dr. Newsome, ditugaskan untuk mengajar setidaknya satu mata kuliah, rincian mereka tidak dapat direkam.
+
+Anomali penghapusan . Semua informasi tentang Dr. Giddens hilang jika mereka untuk sementara berhenti ditugaskan ke kursus apa pun.
+Ketika upaya dilakukan untuk memodifikasi (memperbarui, menyisipkan, atau menghapus dari) suatu relasi, efek samping yang tidak diinginkan berikut mungkin timbul dalam relasi yang belum cukup dinormalisasi:
+
+Perbarui anomali. Informasi yang sama dapat diekspresikan pada beberapa baris; oleh karena itu pembaruan pada relasi dapat mengakibatkan inkonsistensi logis. Misalnya, setiap record dalam relasi "Keterampilan Karyawan" mungkin berisi ID Karyawan, Alamat Karyawan, dan Keahlian; sehingga perubahan alamat untuk karyawan tertentu mungkin perlu diterapkan ke beberapa catatan (satu untuk setiap keterampilan). Jika pembaruan hanya berhasil sebagian – alamat karyawan diperbarui pada beberapa catatan tetapi tidak pada yang lain – maka relasi dibiarkan dalam keadaan tidak konsisten. Secara khusus, relasi tersebut memberikan jawaban yang bertentangan atas pertanyaan tentang alamat karyawan tertentu tersebut.
+Anomali penyisipan. Ada keadaan di mana fakta-fakta tertentu tidak dapat dicatat sama sekali. Misalnya, setiap record dalam relasi "Fakultas dan Kursusnya" mungkin berisi ID Fakultas, Nama Fakultas, Tanggal Perekrutan Fakultas, dan Kode Kursus. Oleh karena itu, rincian setiap anggota fakultas yang mengajar setidaknya satu mata kuliah dapat dicatat, tetapi seorang anggota fakultas yang baru direkrut yang belum ditugaskan untuk mengajar mata kuliah apa pun tidak dapat dicatat, kecuali dengan menyetel Kode Mata kuliah ke null .
+Anomali penghapusan. Dalam keadaan tertentu, penghapusan data yang mewakili fakta tertentu memerlukan penghapusan data yang mewakili fakta yang sama sekali berbeda. Hubungan "Fakultas dan Mata Kuliahnya" yang dijelaskan dalam contoh sebelumnya mengalami jenis anomali ini, karena jika seorang anggota fakultas untuk sementara berhenti ditugaskan ke mata kuliah apa pun, catatan terakhir yang menampilkan anggota fakultas tersebut harus dihapus, secara efektif juga menghapus anggota fakultas, kecuali bidang Kode Kursus disetel ke nol.
+Minimalkan desain ulang saat memperluas struktur database 
+Basis data yang sepenuhnya dinormalisasi memungkinkan strukturnya diperluas untuk mengakomodasi jenis data baru tanpa terlalu banyak mengubah struktur yang ada. Akibatnya, aplikasi yang berinteraksi dengan database tidak terlalu terpengaruh.
+
+Hubungan yang dinormalisasi, dan hubungan antara satu hubungan yang dinormalisasi dan yang lain, mencerminkan konsep dunia nyata dan keterkaitannya.
+
+Bentuk normal 
+Codd memperkenalkan konsep normalisasi dan apa yang sekarang dikenal sebagai bentuk normal pertama (1NF) pada tahun 1970. [4] Codd melanjutkan untuk mendefinisikan bentuk normal kedua (2NF) dan bentuk normal ketiga (3NF) pada tahun 1971, [5] dan Codd dan Raymond F. Boyce mendefinisikan bentuk normal Boyce–Codd (BCNF) pada tahun 1974. [6]
+
+Secara informal, relasi basis data relasional sering digambarkan sebagai "dinormalisasi" jika memenuhi bentuk normal ketiga. [7] Sebagian besar relasi 3NF bebas dari anomali penyisipan, pembaruan, dan penghapusan.
+
+Bentuk normal (dari yang paling tidak dinormalisasi hingga yang paling dinormalisasi) adalah:
+
+UNF: Bentuk yang tidak dinormalisasi
+1NF: Bentuk normal pertama
+2NF: Bentuk normal kedua
+3NF: Bentuk normal ketiga
+EKNF: Bentuk normal kunci dasar
+BCNF: Bentuk normal Boyce–Codd
+4NF: Bentuk normal keempat
+ETNF: Bentuk normal tupel esensial
+5NF: Bentuk normal kelima
+DKNF: Bentuk normal kunci domain
+6NF: Bentuk normal keenam
+UNF
+(1970)	1NF
+(1970)	2NF
+(1971)	3NF
+(1971)	EKNF
+(1982)	BCNF
+(1974)	4NF
+(1977)	ETNF
+(2012)	5NF
+(1979)	DKNF
+(1981)	6NF
+(2003)
+Kunci utama (tidak ada tupel duplikat ) [4]	Mungkin	Ya	Ya	Ya	Ya	Ya	Ya	Ya	Ya	Ya	Ya
+Kolom atom (sel tidak dapat memiliki tabel sebagai nilai) [5]	Tidak	Ya	Ya	Ya	Ya	Ya	Ya	Ya	Ya	Ya	Ya
+Setiap ketergantungan fungsional non-trivial tidak dimulai dengan subset yang tepat dari kunci kandidat atau diakhiri dengan atribut prima (tidak ada ketergantungan fungsional parsial atribut non-prima pada kunci kandidat) [5]	Tidak	Tidak	Ya	Ya	Ya	Ya	Ya	Ya	Ya	Ya	Ya
+Setiap ketergantungan fungsional non-trivial baik dimulai dengan superkey atau diakhiri dengan atribut prima (tidak ada ketergantungan fungsional transitif atribut non-prima pada kunci kandidat) [5]	Tidak	Tidak	Tidak	Ya	Ya	Ya	Ya	Ya	Ya	Ya	Ya
+Setiap ketergantungan fungsional non-sepele baik dimulai dengan superkey atau diakhiri dengan atribut prima dasar	Tidak	Tidak	Tidak	Tidak	Ya	Ya	Ya	Ya	Ya	Ya	—
+Setiap ketergantungan fungsional non-sepele dimulai dengan superkey	Tidak	Tidak	Tidak	Tidak	Tidak	Ya	Ya	Ya	Ya	Ya	—
+Setiap ketergantungan multinilai non-sepele dimulai dengan superkey	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Ya	Ya	Ya	Ya	—
+Setiap ketergantungan bergabung memiliki komponen superkey [8]	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Ya	Ya	Ya	—
+Setiap ketergantungan bergabung hanya memiliki komponen superkey	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Ya	Ya	—
+Setiap kendala adalah konsekuensi dari kendala domain dan kendala utama	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Ya	Tidak
+Setiap ketergantungan bergabung adalah sepele	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Tidak	Ya
+Contoh normalisasi langkah demi langkah 
+Normalisasi adalah teknik desain database, yang digunakan untuk mendesain tabel database relasional hingga ke bentuk normal yang lebih tinggi. [9] Prosesnya progresif, dan level normalisasi database yang lebih tinggi tidak dapat dicapai kecuali level sebelumnya telah dipenuhi. [10]
+
+Itu berarti bahwa, memiliki data dalam bentuk yang tidak dinormalisasi (paling tidak dinormalisasi) dan bertujuan untuk mencapai tingkat normalisasi tertinggi, langkah pertama adalah memastikan kepatuhan terhadap bentuk normal pertama , langkah kedua adalah memastikan bentuk normal kedua terpenuhi, dan seterusnya sesuai urutan tersebut di atas, sampai data memenuhi bentuk normal keenam .
+
+Namun, perlu dicatat bahwa bentuk normal di luar 4NF sebagian besar merupakan kepentingan akademis, karena masalah yang ada untuk dipecahkan jarang muncul dalam praktik. [11]
+
+Data dalam contoh berikut ini sengaja dirancang untuk bertentangan dengan sebagian besar bentuk normal. Dalam kehidupan nyata, sangat mungkin untuk melewatkan beberapa langkah normalisasi karena tabel tidak berisi apa pun yang bertentangan dengan bentuk normal yang diberikan. Biasanya juga terjadi bahwa memperbaiki pelanggaran satu bentuk normal juga memperbaiki pelanggaran bentuk normal yang lebih tinggi dalam proses. Juga satu tabel telah dipilih untuk normalisasi pada setiap langkah, yang berarti bahwa pada akhir proses contoh ini, mungkin masih ada beberapa tabel yang tidak memenuhi bentuk normal tertinggi.
+
+Data awal 
+Biarkan tabel database ada dengan struktur berikut: [10]
+
+Judul	Pengarang	Kebangsaan Penulis	Format	Harga	Subjek	halaman	Ketebalan	Penerbit	Negara Penerbit	Jenis Publikasi	ID genre	Nama Genre
+Memulai Desain dan Optimasi Database MySQL	Chad Russell	Amerika	Sampul keras	49.99	
+MySQL
+Basis data
+Rancangan
+520	Tebal	tekan	Amerika Serikat	buku elektronik	1	tutorial
+Untuk contoh ini, diasumsikan bahwa setiap buku hanya memiliki satu penulis.
+
+Sebagai prasyarat untuk menyesuaikan diri dengan model relasional, sebuah tabel harus memiliki kunci utama , yang secara unik mengidentifikasi sebuah baris. Dua buku dapat memiliki judul yang sama, tetapi nomor ISBN secara unik mengidentifikasi sebuah buku, sehingga dapat digunakan sebagai kunci utama:
+
+ISBN#	Judul	Pengarang	Kebangsaan Penulis	Format	Harga	Subjek	halaman	Ketebalan	Penerbit	Negara Penerbit	Jenis Publikasi	ID genre	Nama Genre
+1590593324	Memulai Desain dan Optimasi Database MySQL	Chad Russell	Amerika	Sampul keras	49.99	
+MySQL
+Basis data
+Rancangan
+520	Tebal	tekan	Amerika Serikat	buku elektronik	1	tutorial
+Memuaskan 1NF 
+Untuk memenuhi Bentuk normal pertama , setiap kolom tabel harus memiliki satu nilai. Kolom yang berisi kumpulan nilai atau catatan bersarang tidak diperbolehkan.
+
+Pada tabel awal, Subjek berisi sekumpulan nilai subjek, artinya tidak sesuai.
+
+Untuk memecahkan masalah, subjek diekstraksi ke dalam tabel Subjek terpisah: [10]
+
+Buku
+ISBN#	Judul	Format	Pengarang	Kebangsaan Penulis	Harga	halaman	Ketebalan	Penerbit	Negara penerbit	ID genre	Nama Genre
+1590593324	Memulai Desain dan Optimasi Database MySQL	Sampul keras	Chad Russell	Amerika	49.99	520	Tebal	tekan	Amerika Serikat	1	tutorial
+Subjek
+ISBN#	Nama subjek
+1590593324	MySQL
+1590593324	Basis data
+1590593324	Rancangan
+Kolom kunci asing ditambahkan ke tabel Subjek , yang mengacu pada kunci utama baris tempat subjek diekstraksi. Oleh karena itu, informasi yang sama diwakili tetapi tanpa menggunakan domain non-sederhana.
+
+Alih-alih satu tabel dalam bentuk yang tidak dinormalisasi , sekarang ada dua tabel yang sesuai dengan 1NF.
+
+Memuaskan 2NF 
+Jika sebuah tabel memiliki satu kolom primary key, maka secara otomatis memenuhi 2NF, tetapi jika tabel memiliki multi-kolom atau kunci komposit maka mungkin tidak memenuhi 2NF.
+Tabel Buku di bawah ini memiliki kunci gabungan {Title, Format} (ditunjukkan dengan garis bawah), sehingga mungkin tidak memenuhi 2NF. Pada titik ini dalam desain kami kunci tersebut tidak diselesaikan sebagai kunci utama , sehingga disebut kunci kandidat . Perhatikan tabel berikut:
+
+Buku
+Judul	Format	Pengarang	Kebangsaan Penulis	Harga	halaman	Ketebalan	ID genre	Nama Genre	ID Penerbit
+Memulai Desain dan Optimasi Database MySQL	Sampul keras	Chad Russell	Amerika	49.99	520	Tebal	1	tutorial	1
+Memulai Desain dan Optimasi Database MySQL	buku elektronik	Chad Russell	Amerika	22.34	520	Tebal	1	tutorial	1
+Model Relasional untuk Manajemen Basis Data: Versi 2	buku elektronik	EFCodd	Inggris	13.88	538	Tebal	2	Ilmu pengetahuan populer	2
+Model Relasional untuk Manajemen Basis Data: Versi 2	Paperback	EFCodd	Inggris	39.99	538	Tebal	2	Ilmu pengetahuan populer	2
+Semua atribut yang bukan merupakan bagian dari kunci kandidat tergantung pada Judul , tetapi hanya Harga juga tergantung pada Format . Untuk menyesuaikan dengan 2NF dan menghilangkan duplikasi, setiap atribut bukan kunci kandidat harus bergantung pada kunci kandidat secara keseluruhan, bukan hanya sebagian saja.
+
+Untuk menormalkan tabel ini, buat {Title} menjadi kunci kandidat (sederhana) (kunci utama) sehingga setiap atribut bukan kunci kandidat bergantung pada seluruh kunci kandidat, dan hapus Harga ke dalam tabel terpisah sehingga ketergantungannya pada Format dapat diawetkan:
+
+Buku
+Judul	Pengarang	Kebangsaan Penulis	halaman	Ketebalan	ID genre	Nama Genre	ID Penerbit
+Memulai Desain dan Optimasi Database MySQL	Chad Russell	Amerika	520	Tebal	1	tutorial	1
+Model Relasional untuk Manajemen Basis Data: Versi 2	EFCodd	Inggris	538	Tebal	2	Ilmu pengetahuan populer	2
+Format - Harga
+Judul	Format	Harga
+Memulai Desain dan Optimasi Database MySQL	Sampul keras	49.99
+Memulai Desain dan Optimasi Database MySQL	buku elektronik	22.34
+Model Relasional untuk Manajemen Basis Data: Versi 2	buku elektronik	13.88
+Model Relasional untuk Manajemen Basis Data: Versi 2	Paperback	39.99
+Sekarang, tabel Book sesuai dengan 2NF .
+
+3NF yang Memuaskan 
+Tabel Buku masih memiliki ketergantungan fungsional transitif ({Author Nationality} bergantung pada {Author}, yang bergantung pada {Title}). Pelanggaran serupa terjadi untuk genre ({Genre Name} bergantung pada {Genre ID}, yang bergantung pada {Title}). Oleh karena itu, tabel Buku tidak dalam 3NF. Untuk membuatnya dalam 3NF, mari gunakan struktur tabel berikut, sehingga menghilangkan ketergantungan fungsional transitif dengan menempatkan {Author Nationality} dan {Genre Name} di tabel masing-masing:
+
+Buku
+Judul	Pengarang	halaman	Ketebalan	ID genre	ID Penerbit
+Memulai Desain dan Optimasi Database MySQL	Chad Russell	520	Tebal	1	1
+Model Relasional untuk Manajemen Basis Data: Versi 2	EFCodd	538	Tebal	2	2
+Format - Harga
+Judul	Format	Harga
+Memulai Desain dan Optimasi Database MySQL	Sampul keras	49.99
+Memulai Desain dan Optimasi Database MySQL	buku elektronik	22.34
+Model Relasional untuk Manajemen Basis Data: Versi 2	buku elektronik	13.88
+Model Relasional untuk Manajemen Basis Data: Versi 2	Paperback	39.99
+Pengarang
+Pengarang	Kebangsaan Penulis
+Chad Russell	Amerika
+EFCodd	Inggris
+Genre
+ID genre	Nama Genre
+1	tutorial
+2	Ilmu pengetahuan populer
+EKNF yang Memuaskan 
+Artikel utama: Bentuk normal kunci dasar
+Bentuk normal kunci dasar (EKNF) berada di antara 3NF dan BCNF dan tidak banyak dibahas dalam literatur. Ini dimaksudkan "untuk menangkap kualitas yang menonjol dari 3NF dan BCNF" sambil menghindari masalah keduanya (yaitu, bahwa 3NF "terlalu pemaaf" dan BCNF "rentan terhadap kompleksitas komputasi"). Karena jarang disebutkan dalam literatur, itu tidak termasuk dalam contoh ini. [12]
+
+Memuaskan 4NF 
+Asumsikan database dimiliki oleh waralaba pengecer buku yang memiliki beberapa pewaralaba yang memiliki toko di lokasi yang berbeda. Dan karena itu pengecer memutuskan untuk menambahkan tabel yang berisi data tentang ketersediaan buku di lokasi yang berbeda:
+
+Penerima Waralaba - Pesan Lokasi
+ID Penerima Waralaba	Judul	Lokasi
+1	Memulai Desain dan Optimasi Database MySQL	California
+1	Memulai Desain dan Optimasi Database MySQL	Florida
+1	Memulai Desain dan Optimasi Database MySQL	Texas
+1	Model Relasional untuk Manajemen Basis Data: Versi 2	California
+1	Model Relasional untuk Manajemen Basis Data: Versi 2	Florida
+1	Model Relasional untuk Manajemen Basis Data: Versi 2	Texas
+2	Memulai Desain dan Optimasi Database MySQL	California
+2	Memulai Desain dan Optimasi Database MySQL	Florida
+2	Memulai Desain dan Optimasi Database MySQL	Texas
+2	Model Relasional untuk Manajemen Basis Data: Versi 2	California
+2	Model Relasional untuk Manajemen Basis Data: Versi 2	Florida
+2	Model Relasional untuk Manajemen Basis Data: Versi 2	Texas
+3	Memulai Desain dan Optimasi Database MySQL	Texas
+Karena struktur tabel ini terdiri dari kunci utama majemuk , itu tidak mengandung atribut non-kunci dan sudah ada di BCNF (dan karenanya juga memenuhi semua bentuk normal sebelumnya ). Namun, dengan asumsi bahwa semua buku yang tersedia ditawarkan di setiap area, Judul tidak terikat dengan jelas ke Lokasi tertentu dan oleh karena itu tabel tidak memenuhi 4NF .
+
+Artinya, untuk memenuhi bentuk normal keempat , tabel ini juga perlu didekomposisi:
+
+Penerima Waralaba - Pesan
+ID Penerima Waralaba	Judul
+1	Memulai Desain dan Optimasi Database MySQL
+1	Model Relasional untuk Manajemen Basis Data: Versi 2
+2	Memulai Desain dan Optimasi Database MySQL
+2	Model Relasional untuk Manajemen Basis Data: Versi 2
+3	Memulai Desain dan Optimasi Database MySQL
+Penerima Waralaba - Lokasi
+ID Penerima Waralaba	Lokasi
+1	California
+1	Florida
+1	Texas
+2	California
+2	Florida
+2	Texas
+3	Texas
+Sekarang, setiap record diidentifikasi dengan jelas oleh superkey , oleh karena itu 4NF terpenuhi. [13]
+
+Memuaskan ETNF 
+Misalkan franchisee juga dapat memesan buku dari pemasok yang berbeda. Biarkan relasi juga tunduk pada kendala berikut:
+
+Jika pemasok tertentu memasok judul tertentu
+dan judul diberikan kepada penerima waralaba
+dan penerima waralaba dipasok oleh pemasok,
+kemudian pemasok memberikan hak tersebut kepada penerima waralaba . [14]
+Pemasok - Buku - Penerima Waralaba
+ID pemasok	Judul	ID Penerima Waralaba
+1	Memulai Desain dan Optimasi Database MySQL	1
+2	Model Relasional untuk Manajemen Basis Data: Versi 2	2
+3	Belajar SQL	3
+Tabel ini dalam 4NF , tetapi ID Pemasok sama dengan gabungan proyeksinya: {{Supplier ID, Book}, {Book, Franchisee ID}, {Franchisee ID, Supplier ID}}. Tidak ada komponen dari join dependency yang merupakan superkey (satu-satunya superkey yang menjadi heading keseluruhan), sehingga tabel tidak memenuhi ETNF dan dapat didekomposisi lebih lanjut: [14]
+
+Pemasok - Buku
+ID pemasok	Judul
+1	Memulai Desain dan Optimasi Database MySQL
+2	Model Relasional untuk Manajemen Basis Data: Versi 2
+3	Belajar SQL
+Buku - Penerima Waralaba
+Judul	ID Penerima Waralaba
+Memulai Desain dan Optimasi Database MySQL	1
+Model Relasional untuk Manajemen Basis Data: Versi 2	2
+Belajar SQL	3
+Penerima Waralaba - Pemasok
+ID pemasok	ID Penerima Waralaba
+1	1
+2	2
+3	3
+Dekomposisi menghasilkan kepatuhan ETNF.
+
+Memuaskan 5NF 
+Untuk menemukan tabel yang tidak memenuhi 5NF , biasanya perlu untuk memeriksa data secara menyeluruh. Misalkan tabel dari contoh 4NF dengan sedikit modifikasi pada data dan mari kita periksa apakah memenuhi 5NF :
+
+Penerima Waralaba - Pesan Lokasi
+ID Penerima Waralaba	Judul	Lokasi
+1	Memulai Desain dan Optimasi Database MySQL	California
+1	Belajar SQL	California
+1	Model Relasional untuk Manajemen Basis Data: Versi 2	Texas
+2	Model Relasional untuk Manajemen Basis Data: Versi 2	California
+Mengurai tabel ini menurunkan redundansi, menghasilkan dua tabel berikut:
+
+Penerima Waralaba - Pesan
+ID Penerima Waralaba	Judul
+1	Memulai Desain dan Optimasi Database MySQL
+1	Belajar SQL
+1	Model Relasional untuk Manajemen Basis Data: Versi 2
+2	Model Relasional untuk Manajemen Basis Data: Versi 2
+Penerima Waralaba - Lokasi
+ID Penerima Waralaba	Lokasi
+1	California
+1	Texas
+2	California
+Kueri yang bergabung dengan tabel ini akan mengembalikan data berikut:
+
+Penerima Waralaba - Buku - Lokasi BERGABUNG
+ID Penerima Waralaba	Judul	Lokasi
+1	Memulai Desain dan Optimasi Database MySQL	California
+1	Belajar SQL	California
+1	Model Relasional untuk Manajemen Basis Data: Versi 2	California
+1	Model Relasional untuk Manajemen Basis Data: Versi 2	Texas
+1	Belajar SQL	Texas
+1	Memulai Desain dan Optimasi Database MySQL	Texas
+2	Model Relasional untuk Manajemen Basis Data: Versi 2	California
+JOIN mengembalikan tiga baris lebih banyak dari yang seharusnya; menambahkan tabel lain untuk memperjelas hasil relasi dalam tiga tabel terpisah:
+Penerima Waralaba - Pesan
+ID Penerima Waralaba	Judul
+1	Memulai Desain dan Optimasi Database MySQL
+1	Belajar SQL
+1	Model Relasional untuk Manajemen Basis Data: Versi 2
+2	Model Relasional untuk Manajemen Basis Data: Versi 2
+Penerima Waralaba - Lokasi
+ID Penerima Waralaba	Lokasi
+1	California
+1	Texas
+2	California
+Lokasi - Pesan
+Lokasi	Judul
+California	Memulai Desain dan Optimasi Database MySQL
+California	Belajar SQL
+California	Model Relasional untuk Manajemen Basis Data: Versi 2
+Texas	Model Relasional untuk Manajemen Basis Data: Versi 2
+Apa yang akan JOIN kembalikan sekarang? Sebenarnya tidak mungkin untuk menggabungkan ketiga tabel ini. Itu berarti tidak mungkin untuk menguraikan Penerima Waralaba - Lokasi Buku tanpa kehilangan data, oleh karena itu tabel sudah memenuhi 5NF . [13]
+
+CJ Date berpendapat bahwa hanya database di 5NF yang benar-benar "dinormalisasi". [15]
+
+Memuaskan DKNF 
+Mari kita lihat tabel Book dari contoh sebelumnya dan lihat apakah memenuhi bentuk normal Domain-key :
+
+Buku
+Judul	halaman	Ketebalan	ID genre	ID Penerbit
+Memulai Desain dan Optimasi Database MySQL	520	Tebal	1	1
+Model Relasional untuk Manajemen Basis Data: Versi 2	538	Tebal	2	2
+Belajar SQL	338	Langsing	1	3
+Buku Masak SQL	636	Tebal	1	3
+Logikanya, Ketebalan ditentukan oleh jumlah halaman. Itu berarti itu tergantung pada Halaman yang bukan kunci. Mari kita beri contoh konvensi yang mengatakan buku hingga 350 halaman dianggap "ramping" dan buku lebih dari 350 halaman dianggap "tebal".
+
+Konvensi ini secara teknis merupakan kendala tetapi bukan merupakan kendala domain atau kendala kunci; oleh karena itu kami tidak dapat mengandalkan batasan domain dan batasan utama untuk menjaga integritas data.
+
+Dengan kata lain — tidak ada yang menghalangi kami untuk menempatkan, misalnya, "Tebal" untuk buku dengan hanya 50 halaman — dan ini membuat tabel melanggar DKNF .
+
+Untuk mengatasi ini, tabel yang berisi enumerasi yang mendefinisikan Ketebalan dibuat, dan kolom tersebut dihapus dari tabel asli:
+
+Ketebalan Enum
+Ketebalan	halaman minimal	halaman maks
+Langsing	1	350
+Tebal	351	999.999.999.999
+Buku - Halaman - Genre - Penerbit
+Judul	halaman	ID genre	ID Penerbit
+Memulai Desain dan Optimasi Database MySQL	520	1	1
+Model Relasional untuk Manajemen Basis Data: Versi 2	538	2	2
+Belajar SQL	338	1	3
+Buku Masak SQL	636	1	3
+Dengan begitu, pelanggaran integritas domain telah dihilangkan, dan tabelnya ada di DKNF .
+
+Memuaskan 6NF 
+Definisi sederhana dan intuitif dari bentuk normal keenam adalah bahwa "sebuah tabel berada dalam 6NF ketika baris berisi Kunci Utama, dan paling banyak satu atribut lainnya" . [16]
+
+Itu berarti, misalnya, tabel Publisher dirancang saat membuat 1NF
+
+Penerbit
+Publisher_ID	Nama	Negara
+1	tekan	Amerika Serikat
+perlu diuraikan lebih lanjut menjadi dua tabel:
+
+Penerbit
+Publisher_ID	Nama
+1	tekan
+Negara penerbit
+Publisher_ID	Negara
+1	Amerika Serikat
+Kelemahan yang jelas dari 6NF adalah proliferasi tabel yang diperlukan untuk mewakili informasi pada satu entitas. Jika sebuah tabel dalam 5NF memiliki satu kolom kunci utama dan N atribut, mewakili informasi yang sama dalam 6NF akan membutuhkan N tabel; pembaruan multi-bidang ke catatan konseptual tunggal akan memerlukan pembaruan ke beberapa tabel; dan penyisipan dan penghapusan juga akan membutuhkan operasi di beberapa tabel. Untuk alasan ini, dalam database yang dimaksudkan untuk melayani kebutuhan Pemrosesan Transaksi Online , 6NF tidak boleh digunakan.
+
+Namun, di gudang data , yang tidak mengizinkan pembaruan interaktif dan yang dikhususkan untuk kueri cepat pada volume data yang besar, DBMS tertentu menggunakan representasi 6NF internal — yang dikenal sebagai penyimpanan data kolom . Dalam situasi di mana jumlah nilai unik kolom jauh lebih sedikit daripada jumlah baris dalam tabel, penyimpanan berorientasi kolom memungkinkan penghematan ruang yang signifikan melalui kompresi data. Penyimpanan kolom juga memungkinkan eksekusi cepat kueri rentang (mis., tampilkan semua rekaman di mana kolom tertentu berada di antara X dan Y, atau kurang dari X.)
+
+Namun, dalam semua kasus ini, perancang database tidak harus melakukan normalisasi 6NF secara manual dengan membuat tabel terpisah. Beberapa DBMS yang dikhususkan untuk pergudangan, seperti Sybase IQ , menggunakan penyimpanan kolumnar secara default, tetapi perancang masih hanya melihat satu tabel multi-kolom. DBMS lain, seperti Microsoft SQL Server 2012 dan yang lebih baru, memungkinkan Anda menentukan "indeks toko kolom" untuk tabel tertentu. 

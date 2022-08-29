@@ -1,0 +1,36 @@
+Bahasa manipulasi data ( DML ) adalah bahasa pemrograman komputer yang digunakan untuk menambah (menyisipkan), menghapus, dan memodifikasi (memperbarui) data dalam database . DML sering merupakan subbahasa dari bahasa database yang lebih luas seperti SQL , dengan DML terdiri dari beberapa operator dalam bahasa tersebut. [1] Pemilihan data read -only terkadang dibedakan sebagai bagian dari bahasa kueri data (DQL) yang terpisah, tetapi ini terkait erat dan terkadang juga dianggap sebagai komponen DML; beberapa operator dapat melakukan pemilihan (membaca) dan menulis.
+
+Bahasa manipulasi data yang populer adalah Structured Query Language (SQL), yang digunakan untuk mengambil dan memanipulasi data dalam database relasional . [2] Bentuk lain dari DML adalah yang digunakan oleh IMS /DLI, database CODASYL , seperti IDMS dan lain-lain.
+
+
+Isi
+1	SQL
+2	Varian
+3	Lihat juga
+3.1	Pernyataan
+3.2	Bahasa terkait
+4	Referensi
+5	Tautan eksternal
+SQL 
+Dalam SQL, bahasa manipulasi data terdiri dari pernyataan perubahan data SQL , [3] yang memodifikasi data yang disimpan tetapi bukan skema atau objek database. Manipulasi objek database persisten, misalnya tabel atau prosedur tersimpan , melalui pernyataan skema SQL, [3] daripada data yang disimpan di dalamnya, dianggap sebagai bagian dari bahasa definisi data (DDL) yang terpisah. Dalam SQL, kedua kategori ini serupa dalam sintaksis terperinci, tipe data, ekspresi, dll., Tetapi berbeda dalam fungsi keseluruhannya. [3]
+
+Pernyataan perubahan data SQL adalah bagian dari pernyataan data SQL ; ini juga berisi pernyataan kueri SELECT , [3] yang sebenarnya merupakan bagian dari DQL, bukan DML. Namun dalam praktik umum, perbedaan ini tidak dibuat dan SELECT secara luas dianggap sebagai bagian dari DML, [4] sehingga DML terdiri dari semua pernyataan data SQL , tidak hanya pernyataan perubahan data SQL . Formulir SELECT ... INTO ...menggabungkan seleksi dan manipulasi, dan dengan demikian secara ketat dianggap sebagai DML karena memanipulasi (yaitu memodifikasi) data.
+
+Bahasa manipulasi data memiliki kemampuan fungsional yang diatur oleh kata awal dalam sebuah pernyataan, yang hampir selalu berupa kata kerja . Dalam kasus SQL, kata kerja ini adalah:
+
+SELECT ... FROM ... WHERE ...(sebenarnya DQL)
+SELECT ... INTO ...
+INSERT INTO ... VALUES ...
+UPDATE ... SET ... WHERE ...
+DELETE FROM ... WHERE ...
+Misalnya, perintah untuk menyisipkan baris ke dalam tabel karyawan :
+
+INSERT  INTO  employee  ( first_name ,  last_name ,  fname )  VALUES  ( 'John' ,  'Capita' ,  'xcapit00' );
+Varian 
+Kebanyakan implementasi database SQL memperluas kemampuan SQL mereka dengan menyediakan imperatif , yaitu bahasa prosedural. Contohnya adalah PL /SQL Oracle dan SQL_PL IBM Db2 .
+
+Bahasa manipulasi data cenderung memiliki banyak rasa dan kemampuan yang berbeda antara vendor database. Ada sejumlah standar yang ditetapkan untuk SQL oleh ANSI , [2] tetapi vendor masih menyediakan ekstensi mereka sendiri ke standar sementara tidak menerapkan seluruh standar.
+
+Bahasa manipulasi data dibagi menjadi dua jenis, pemrograman prosedural dan pemrograman deklaratif .
+
+Bahasa manipulasi data awalnya hanya digunakan dalam program komputer , tetapi dengan munculnya SQL telah digunakan secara interaktif oleh administrator database.

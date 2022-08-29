@@ -1,0 +1,65 @@
+Ini adalah daftar perangkat lunak pemetaan objek-relasional yang terkenal. Hal ini tidak up-to-date atau semua-inklusif.
+
+
+Isi
+1	Jawa
+2	iOS
+3	.BERSIH
+4	Objective-C, Kakao
+5	Perl
+6	PHP
+7	Python
+8	Rubi
+9	obrolan ringan
+10	Lihat juga
+11	Referensi
+Jawa 
+Apache Cayenne , sumber terbuka untuk Java
+Apache OpenJPA , sumber terbuka untuk Java
+DataNucleus , implementasi JDO dan JPA open-source (sebelumnya dikenal sebagai JPOX)
+Ebean , kerangka kerja ORM sumber terbuka
+EclipseLink , platform ketekunan Eclipse
+Perusahaan JavaBeans (EJB)
+Enterprise Objects Framework , Mac OS X/Java, bagian dari Apple WebObjects
+Hibernate , kerangka kerja ORM sumber terbuka, banyak digunakan
+Objek Data Java (JDO)
+Permintaan Berorientasi Objek JOOQ (jOOQ)
+Kodo , implementasi komersial dari Java Data Objects dan Java Persistence API
+TopLink oleh Oracle
+iOS 
+Data Inti oleh Apple untuk Mac OS X dan iOS
+.NET 
+Perpustakaan Komponen Base One Foundation , gratis atau komersial
+Keren , sumber terbuka
+Entity Framework , termasuk dalam .NET Framework 3.5 SP1 dan di atasnya
+iBATIS , open source gratis, dikelola oleh ASF tetapi sekarang tidak aktif.
+LINQ ke SQL , termasuk dalam .NET Framework 3.5
+NHibernate , sumber terbuka
+nHidrasi , sumber terbuka
+Objek Cepat , gratis atau komersial
+Objective-C, Kakao 
+Enterprise Objects , salah satu pembuat OR komersial pertama, tersedia sebagai bagian dari WebObjects
+Data Inti , kerangka kerja manajemen grafik objek dengan beberapa penyimpanan persisten, dikirimkan dengan Mac OS X dan iOS
+Perl 
+DBIx::Kelas
+PHP 
+Laravel , kerangka kerja yang berisi ORM yang disebut "Eloquent" sebuah implementasi ActiveRecord.
+Doktrin , open source ORM untuk PHP 5.2.3, 5.3.X., 7.4.X Perangkat lunak gratis (MIT)
+CakePHP , ORM dan kerangka kerja untuk PHP 5, open source (skalar, array, objek); berdasarkan introspeksi basis data, tidak ada perluasan kelas
+CodeIgniter , kerangka kerja yang menyertakan implementasi ActiveRecord
+Yii , ORM dan framework untuk PHP 5, dirilis di bawah lisensi BSD. Berdasarkan pola ActiveRecord
+FuelPHP , ORM dan kerangka kerja untuk PHP 5.3, dirilis di bawah lisensi MIT. Berdasarkan pola ActiveRecord.
+Laminas , kerangka kerja yang mencakup implementasi gateway data tabel dan gateway data baris
+Propel , ORM dan query-toolkit untuk PHP 5, terinspirasi oleh Apache Torque, perangkat lunak gratis, MIT
+Qcodo , ORM dan kerangka kerja untuk PHP 5, open source
+QCubed , Garpu Qcodo yang digerakkan oleh komunitas
+Redbean , lapisan ORM untuk PHP 5, untuk membuat dan memelihara tabel dengan cepat, open source, BSD
+Skipper , alat visualisasi dan generator kode/skema untuk kerangka kerja PHP ORM , komersial
+Python 
+Django , ActiveRecord ORM termasuk dalam kerangka kerja Django, open source
+SQLAlchemy , open source, Data Mapper ORM
+SQLObject , sumber terbuka
+Storm , open source (LGPL 2.1) dikembangkan di Canonical Ltd.
+Coba , sumber terbuka
+web2py , fasilitas ORM ditangani oleh DAL di web2py, open source
+Odoo – Sebelumnya dikenal sebagai OpenERP, Ini adalah Open Source ERP di mana ORM disertakan.

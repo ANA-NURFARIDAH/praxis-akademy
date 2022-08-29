@@ -1,0 +1,163 @@
+model database adalah jenis model data yang menentukan struktur logis dari database . Ini pada dasarnya menentukan cara data dapat disimpan, diatur, dan dimanipulasi. Contoh paling populer dari model database adalah model relasional , yang menggunakan format berbasis tabel.
+
+
+Isi
+1	Jenis
+2	Hubungan dan fungsi
+3	Model datar
+4	Model data awal
+4.1	Model hierarkis
+4.2	Model jaringan
+4.3	Model file terbalik
+5	Model relasional
+5.1	Model dimensi
+6	Model database pasca-relasional
+6.1	Model grafik
+6.2	Model multinilai
+6.3	Model database berorientasi objek
+7	Lihat juga
+8	Referensi
+Jenis 
+Model data logis umum untuk database meliputi:
+
+Model basis data hierarkis
+Ini adalah bentuk tertua dari model basis data. Ini dikembangkan oleh IBM untuk IMS (Sistem Manajemen Informasi). Ini adalah satu set data terorganisir dalam struktur pohon. Catatan DB adalah pohon yang terdiri dari banyak kelompok yang disebut segmen. Ini menggunakan hubungan satu ke banyak. Akses data juga dapat diprediksi.
+Model jaringan
+Model relasional
+Model hubungan entitas
+Model hubungan entitas yang disempurnakan
+Model objek
+Model dokumen
+Model entitas–atribut–nilai
+Skema bintang
+Sebuah database objek-relasional menggabungkan dua struktur terkait.
+
+Model data fisik meliputi:
+
+Indeks terbalik
+File datar
+Model lainnya termasuk:
+
+Model korelasional
+Model multidimensi
+Model multinilai
+Model semantik
+basis data XML
+Grafik bernama
+Toko tiga
+Hubungan dan fungsi 
+Sistem manajemen basis data yang diberikan dapat menyediakan satu atau lebih model. Struktur optimal tergantung pada organisasi alami dari data aplikasi, dan pada persyaratan aplikasi, yang meliputi tingkat transaksi (kecepatan), keandalan, pemeliharaan, skalabilitas, dan biaya. Sebagian besar sistem manajemen basis data dibangun di sekitar satu model data tertentu, meskipun ada kemungkinan produk menawarkan dukungan untuk lebih dari satu model.
+
+Berbagai model data fisik dapat mengimplementasikan model logis yang diberikan. Sebagian besar perangkat lunak basis data akan menawarkan kepada pengguna beberapa tingkat kontrol dalam menyetel implementasi fisik, karena pilihan yang dibuat memiliki pengaruh yang signifikan terhadap kinerja.
+
+Model bukan hanya cara menyusun data: model juga mendefinisikan serangkaian operasi yang dapat dilakukan pada data. [1] Model relasional, misalnya, mendefinisikan operasi seperti pilih ( project ) dan join . Meskipun operasi ini mungkin tidak eksplisit dalam bahasa kueri tertentu , operasi ini memberikan dasar di mana bahasa kueri dibangun.
+
+Model datar 
+
+Model File Datar
+Artikel utama: Database file datar dan Spreadsheet
+Model datar (atau tabel) terdiri dari satu larik elemen data dua dimensi , di mana semua anggota kolom tertentu diasumsikan memiliki nilai yang sama, dan semua anggota baris diasumsikan terkait satu sama lain. Misalnya, kolom untuk nama dan kata sandi yang mungkin digunakan sebagai bagian dari database keamanan sistem. Setiap baris akan memiliki kata sandi khusus yang terkait dengan pengguna individu. Kolom tabel sering memiliki tipe yang terkait dengannya, mendefinisikannya sebagai data karakter, informasi tanggal atau waktu, bilangan bulat, atau angka floating point. Format tabel ini merupakan pendahulu dari model relasional.
+
+Model data awal 
+Model-model ini populer pada 1960-an, 1970-an, tetapi saat ini dapat ditemukan terutama di sistem lama . Mereka dicirikan terutama dengan menjadi navigasi dengan koneksi yang kuat antara representasi logis dan fisik mereka, dan kekurangan dalam kemandirian data .
+
+Model hierarkis 
+
+Model Hirarki
+Artikel utama: Model hierarki
+Dalam model hierarkis , data diatur ke dalam struktur seperti pohon , yang menyiratkan induk tunggal untuk setiap catatan. Bidang pengurutan menyimpan catatan saudara dalam urutan tertentu. Struktur hierarkis banyak digunakan dalam sistem manajemen basis data mainframe awal, seperti Sistem Manajemen Informasi (IMS) oleh IBM , dan sekarang menggambarkan struktur dokumen XML . Struktur ini memungkinkan hubungan satu-ke-banyak antara dua jenis data. Struktur ini sangat efisien untuk menggambarkan banyak hubungan di dunia nyata; resep, daftar isi, urutan paragraf/ayat, informasi bersarang dan diurutkan.
+
+Hirarki ini digunakan sebagai urutan fisik catatan dalam penyimpanan. Akses rekaman dilakukan dengan menavigasi ke bawah melalui struktur data menggunakan pointer yang dikombinasikan dengan akses berurutan. Karena itu, struktur hierarki tidak efisien untuk operasi basis data tertentu ketika jalur penuh (sebagai lawan dari tautan ke atas dan bidang pengurutan) juga tidak disertakan untuk setiap catatan. Keterbatasan tersebut telah dikompensasikan dalam versi IMS selanjutnya dengan hierarki logis tambahan yang dikenakan pada hierarki fisik dasar.
+
+Model jaringan 
+
+Model Jaringan
+Artikel utama: Model jaringan
+Model jaringan memperluas struktur hierarki, memungkinkan hubungan banyak-ke-banyak dalam struktur seperti pohon yang memungkinkan banyak orang tua. Itu paling populer sebelum digantikan oleh model relasional, dan didefinisikan oleh spesifikasi CODASYL .
+
+Model jaringan mengatur data menggunakan dua konsep dasar, yang disebut record dan set . Catatan berisi bidang (yang dapat diatur secara hierarkis, seperti dalam bahasa pemrograman COBOL ). Himpunan (jangan bingung dengan himpunan matematika) mendefinisikan hubungan satu-ke-banyak antara catatan: satu pemilik, banyak anggota. Sebuah record dapat menjadi pemilik di sejumlah set, dan anggota di sejumlah set.
+
+Satu set terdiri dari daftar tertaut melingkar di mana satu jenis rekaman, pemilik set atau induk, muncul satu kali di setiap lingkaran, dan jenis rekaman kedua, bawahan atau anak, mungkin muncul beberapa kali di setiap lingkaran. Dengan cara ini hierarki dapat dibuat antara dua jenis record, misalnya, tipe A adalah pemilik B. Pada saat yang sama, himpunan lain dapat didefinisikan di mana B adalah pemilik A. Jadi semua himpunan terdiri dari graf berarah umum (kepemilikan mendefinisikan arah), atau membangun jaringan . Akses ke rekaman dapat dilakukan secara berurutan (biasanya di setiap jenis rekaman) atau dengan navigasi dalam daftar tertaut melingkar.
+
+Model jaringan mampu merepresentasikan redundansi dalam data lebih efisien daripada model hierarkis, dan bisa ada lebih dari satu jalur dari simpul leluhur ke turunan. Operasi model jaringan adalah gaya navigasi: program mempertahankan posisi saat ini, dan menavigasi dari satu catatan ke catatan lain dengan mengikuti hubungan di mana catatan berpartisipasi. Catatan juga dapat ditemukan dengan memberikan nilai kunci.
+
+Meskipun bukan merupakan fitur penting dari model, database jaringan umumnya menerapkan hubungan yang ditetapkan melalui pointer yang secara langsung mengarahkan lokasi record pada disk. Ini memberikan kinerja pengambilan yang sangat baik, dengan mengorbankan operasi seperti pemuatan basis data dan reorganisasi.
+
+Produk DBMS populer yang memanfaatkannya adalah Cincom Systems 'Total dan Culinet 's IDMS . IDMS memperoleh basis pelanggan yang cukup besar; pada 1980-an, ia mengadopsi model relasional dan SQL di samping alat dan bahasa aslinya.
+
+Sebagian besar database objek (ditemukan pada 1990-an) menggunakan konsep navigasi untuk menyediakan navigasi cepat di seluruh jaringan objek, umumnya menggunakan pengidentifikasi objek sebagai penunjuk "pintar" ke objek terkait. Objectivity/DB , misalnya, mengimplementasikan hubungan bernama satu-ke-satu, satu-ke-banyak, banyak-ke-satu, dan banyak-ke-banyak bernama yang dapat melintasi database. Banyak database objek juga mendukung SQL , menggabungkan kekuatan kedua model.
+
+Model file terbalik 
+Artikel utama: Indeks terbalik
+Dalam file terbalik atau indeks terbalik , konten data digunakan sebagai kunci dalam tabel pencarian, dan nilai dalam tabel adalah penunjuk ke lokasi setiap instance item konten tertentu. Ini juga merupakan struktur logis dari indeks basis data kontemporer , yang mungkin hanya menggunakan konten dari kolom tertentu dalam tabel pencarian. Model data file terbalik dapat menempatkan indeks dalam satu set file di sebelah file database datar yang ada, untuk secara langsung mengakses catatan yang diperlukan dalam file ini secara efisien.
+
+Penting untuk menggunakan model data ini adalah ADABAS DBMS dari Software AG , yang diperkenalkan pada tahun 1970. ADABAS telah memperoleh basis pelanggan yang cukup besar dan ada serta didukung hingga saat ini. Pada 1980-an telah mengadopsi model relasional dan SQL di samping alat dan bahasa aslinya.
+
+Database berorientasi dokumen Clusterpoint menggunakan model pengindeksan terbalik untuk menyediakan pencarian teks lengkap yang cepat untuk objek data XML atau JSON misalnya.
+
+Model relasional 
+
+Dua tabel dengan hubungan
+Artikel utama: Model relasional
+Model relasional diperkenalkan oleh EF Codd pada tahun 1970 [2] sebagai cara untuk membuat sistem manajemen database lebih independen dari aplikasi tertentu. Ini adalah model matematika yang didefinisikan dalam logika predikat dan teori himpunan , dan implementasinya telah digunakan oleh sistem mainframe, midrange dan mikrokomputer.
+
+Produk yang umumnya disebut sebagai database relasional sebenarnya menerapkan model yang hanya merupakan pendekatan terhadap model matematika yang didefinisikan oleh Codd. Tiga istilah kunci digunakan secara luas dalam model basis data relasional: relasi , atribut , dan domain . Relasi adalah tabel yang memiliki kolom dan baris. Kolom bernama dari relasi disebut atribut, dan domain adalah himpunan nilai yang boleh diambil oleh atribut.
+
+Struktur data dasar dari model relasional adalah tabel, di mana informasi tentang entitas tertentu (misalnya, seorang karyawan) direpresentasikan dalam baris (juga disebut tupel ) dan kolom. Jadi, " hubungan " dalam "database relasional" mengacu pada berbagai tabel dalam database; sebuah relasi adalah sekumpulan tupel. Kolom menyebutkan berbagai atribut entitas (misalnya, nama karyawan, alamat atau nomor telepon), dan baris adalah contoh aktual dari entitas (karyawan tertentu) yang diwakili oleh relasi. Akibatnya, setiap tupel tabel karyawan mewakili berbagai atribut dari satu karyawan.
+
+Semua relasi (dan, dengan demikian, tabel) dalam database relasional harus mematuhi beberapa aturan dasar untuk memenuhi syarat sebagai relasi. Pertama, urutan kolom tidak penting dalam sebuah tabel. Kedua, tidak boleh ada tupel atau baris yang identik dalam sebuah tabel. Dan ketiga, setiap tuple akan berisi satu nilai untuk setiap atributnya.
+
+Database relasional berisi beberapa tabel, masing-masing mirip dengan yang ada di model database "datar". Salah satu kekuatan model relasional adalah, pada prinsipnya, setiap nilai yang terjadi pada dua record yang berbeda (milik tabel yang sama atau tabel yang berbeda), menyiratkan hubungan antara dua record tersebut. Namun, untuk menegakkan batasan integritas eksplisit , hubungan antara catatan dalam tabel juga dapat didefinisikan secara eksplisit, dengan mengidentifikasi atau tidak mengidentifikasi hubungan induk-anak yang ditandai dengan menetapkan kardinalitas (1:1, (0)1:M, M:M ). Tabel juga dapat memiliki satu atribut yang ditunjuk atau satu set atribut yang dapat bertindak sebagai "kunci", yang dapat digunakan untuk mengidentifikasi secara unik setiap tupel dalam tabel.
+
+Kunci yang dapat digunakan untuk mengidentifikasi baris dalam tabel secara unik disebut kunci utama. Kunci biasanya digunakan untuk menggabungkan atau menggabungkan data dari dua atau lebih tabel. Misalnya, tabel Karyawan mungkin berisi kolom bernama Lokasi yang berisi nilai yang cocok dengan kunci tabel Lokasi . Kunci juga penting dalam pembuatan indeks, yang memfasilitasi pengambilan data dengan cepat dari tabel besar. Setiap kolom dapat menjadi kunci, atau beberapa kolom dapat dikelompokkan bersama menjadi kunci majemuk. Tidak perlu mendefinisikan semua kunci terlebih dahulu; kolom dapat digunakan sebagai kunci meskipun awalnya tidak dimaksudkan sebagai kunci.
+
+Kunci yang memiliki arti dunia nyata eksternal (seperti nama seseorang, ISBN buku , atau nomor seri mobil) terkadang disebut kunci "alami". Jika tidak ada kunci alami yang cocok (pikirkan banyak orang bernama Brown ), kunci arbitrer atau pengganti dapat diberikan (seperti dengan memberikan nomor ID karyawan). Dalam praktiknya, sebagian besar database memiliki kunci yang dihasilkan dan kunci alami, karena kunci yang dihasilkan dapat digunakan secara internal untuk membuat tautan di antara baris yang tidak dapat terputus, sedangkan kunci alami dapat digunakan, kurang andal, untuk pencarian dan untuk integrasi dengan database lain. (Misalnya, catatan dalam dua database yang dikembangkan secara independen dapat dicocokkan dengan nomor jaminan sosial , kecuali jika nomor jaminan sosial salah, hilang, atau telah berubah.
+
+Bahasa query yang paling umum digunakan dengan model relasional adalah Structured Query Language ( SQL ).
+
+Model dimensi 
+Model dimensional adalah adaptasi khusus dari model relasional yang digunakan untuk merepresentasikan data dalam gudang data sedemikian rupa sehingga data dapat dengan mudah diringkas menggunakan pemrosesan analitik online, atau OLAP .pertanyaan. Dalam model dimensi, skema database terdiri dari satu tabel besar fakta yang dijelaskan menggunakan dimensi dan ukuran. Dimensi memberikan konteks fakta (seperti siapa yang berpartisipasi, kapan dan di mana itu terjadi, dan jenisnya) dan digunakan dalam kueri untuk mengelompokkan fakta terkait bersama-sama. Dimensi cenderung terpisah dan seringkali hierarkis; misalnya, lokasi mungkin mencakup gedung, negara bagian, dan negara. Ukuran adalah kuantitas yang menggambarkan fakta, seperti pendapatan. Penting bahwa ukuran dapat diagregasi secara bermakna—misalnya, pendapatan dari lokasi yang berbeda dapat ditambahkan bersama-sama.
+
+Dalam kueri OLAP, dimensi dipilih dan fakta dikelompokkan dan digabungkan bersama untuk membuat ringkasan.
+
+Model dimensi sering diimplementasikan di atas model relasional menggunakan skema bintang , terdiri dari satu tabel yang sangat dinormalisasi yang berisi fakta-fakta, dan tabel denormalisasi sekitarnya yang berisi setiap dimensi. Implementasi fisik alternatif, yang disebut skema kepingan salju , menormalkan hierarki multi-level dalam dimensi menjadi beberapa tabel.
+
+Sebuah gudang data dapat berisi beberapa skema dimensi yang berbagi tabel dimensi, memungkinkan mereka untuk digunakan bersama-sama. Muncul dengan satu set standar dimensi merupakan bagian penting dari pemodelan dimensi .
+
+Performanya yang tinggi telah menjadikan model dimensional sebagai struktur database paling populer untuk OLAP.
+
+Model database pasca-relasional 
+Produk yang menawarkan model data yang lebih umum daripada model relasional terkadang diklasifikasikan sebagai pasca-relasional . [3] Istilah alternatif termasuk "basis data hibrida", "RDBMS yang disempurnakan dengan objek" dan lainnya. Model data dalam produk tersebut menggabungkan hubungan tetapi tidak dibatasi oleh Prinsip Informasi EF Codd , yang mengharuskan
+
+semua informasi dalam database harus ditampilkan secara eksplisit dalam hal nilai dalam hubungan dan tidak dengan cara lain
+
+—  [4]
+Beberapa dari perluasan model relasional ini mengintegrasikan konsep-konsep dari teknologi yang mendahului model relasional. Misalnya, mereka mengizinkan representasi dari grafik berarah dengan pohon pada node. Perusahaan Jerman tersebut mengimplementasikan konsep ini dalam GraphDB - nya .
+
+Beberapa produk pasca-relasional memperluas sistem relasional dengan fitur non-relasional. Lainnya tiba di banyak tempat yang sama dengan menambahkan fitur relasional ke sistem pra-relasional. Secara paradoks, ini memungkinkan produk yang secara historis pra-relasional, seperti PICK dan MUMPS , untuk membuat klaim yang masuk akal sebagai pasca-relasional.
+
+Resource space model (RSM) adalah model data non-relasional berdasarkan klasifikasi multidimensi. [5]
+
+Model grafik 
+Artikel utama: Basis data grafik
+Database grafik memungkinkan struktur yang lebih umum daripada database jaringan; setiap node dapat terhubung ke node lain.
+
+Model multinilai 
+Artikel utama: MultiNilai
+Basis data multinilai adalah data "kental", di mana mereka dapat menyimpan dengan cara yang persis sama seperti basis data relasional, tetapi mereka juga mengizinkan tingkat kedalaman yang hanya dapat diperkirakan oleh model relasional menggunakan sub-tabel. Ini hampir identik dengan cara XML mengekspresikan data, di mana bidang/atribut tertentu dapat memiliki beberapa jawaban yang benar secara bersamaan. Multinilai dapat dianggap sebagai bentuk XML terkompresi.
+
+Contohnya adalah faktur, yang dalam data multinilai atau relasional dapat dilihat sebagai (A) Tabel Header Faktur - satu entri per faktur, dan (B) Tabel Detail Faktur - satu entri per item baris. Dalam model multinilai, kami memiliki opsi untuk menyimpan data seperti pada tabel, dengan tabel tertanam untuk mewakili detail: (A) Tabel Faktur - satu entri per faktur, tidak diperlukan tabel lain.
+
+Keuntungannya adalah atomitas Faktur (konseptual) dan Faktur (representasi data) adalah satu-ke-satu. Ini juga menghasilkan lebih sedikit pembacaan, lebih sedikit masalah integritas referensial, dan penurunan dramatis dalam perangkat keras yang diperlukan untuk mendukung volume transaksi tertentu.
+
+Model database berorientasi objek 
+
+Model Berorientasi Objek
+Artikel utama: Model objek–relasional dan Model objek
+Pada 1990-an, paradigma pemrograman berorientasi objek diterapkan pada teknologi basis data, menciptakan model basis data baru yang dikenal sebagai basis data objek . Ini bertujuan untuk menghindari ketidakcocokan impedansi objek-relasional – biaya konversi informasi antara representasinya dalam database (misalnya sebagai baris dalam tabel) dan representasinya dalam program aplikasi (biasanya sebagai objek). Lebih jauh lagi, sistem tipe yang digunakan dalam aplikasi tertentu dapat didefinisikan secara langsung dalam database, memungkinkan database untuk menerapkan invarian integritas data yang sama. Database objek juga memperkenalkan ide-ide kunci pemrograman objek, seperti enkapsulasi dan polimorfisme, ke dalam dunia database.
+
+Berbagai cara tersebut telah dicoba [ oleh siapa? ] untuk menyimpan objek dalam database. Beberapa [ yang? ] produk telah mendekati masalah dari akhir pemrograman aplikasi, dengan membuat objek dimanipulasi oleh program terus- menerus . Ini biasanya memerlukan penambahan beberapa jenis bahasa kueri, karena bahasa pemrograman konvensional tidak memiliki kemampuan untuk menemukan objek berdasarkan konten informasinya. Lainnya [ yang? ]telah menyerang masalah dari akhir database, dengan mendefinisikan model data berorientasi objek untuk database, dan mendefinisikan bahasa pemrograman database yang memungkinkan kemampuan pemrograman penuh serta fasilitas query tradisional.
+
+Basis data objek menderita karena kurangnya standarisasi: meskipun standar didefinisikan oleh ODMG , mereka tidak pernah diterapkan dengan cukup baik untuk memastikan interoperabilitas antar produk. Namun demikian, database objek telah berhasil digunakan dalam banyak aplikasi: biasanya aplikasi khusus seperti database teknik atau database biologi molekuler daripada pemrosesan data komersial arus utama. Namun, ide basis data objek diambil oleh vendor relasional dan memengaruhi ekstensi yang dibuat untuk produk ini dan memang untuk bahasa SQL .
+
+Sebuah alternatif untuk menerjemahkan antara objek dan database relasional adalah dengan menggunakan perpustakaan pemetaan objek-relasional (ORM).

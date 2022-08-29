@@ -1,0 +1,129 @@
+Bahasa kontrol data ( DCL ) adalah sintaks yang mirip dengan bahasa pemrograman komputer yang digunakan untuk mengontrol akses ke data yang disimpan dalam database ( otorisasi ). Secara khusus, ini adalah komponen dari Structured Query Language (SQL). Bahasa Kontrol Data adalah salah satu kelompok logis dalam Perintah SQL. SQL [1] adalah bahasa standar untuk sistem manajemen basis data relasional. Pernyataan SQL digunakan untuk melakukan tugas-tugas seperti memasukkan data ke database, menghapus atau memperbarui data dalam database, atau mengambil data dari database.
+
+Meskipun sistem basis data menggunakan SQL, mereka juga memiliki ekstensi kepemilikan tambahan yang biasanya hanya digunakan pada sistem mereka. Misalnya Microsoft SQL server menggunakan Transact-SQL (T-SQL) yang merupakan kepanjangan dari SQL. Demikian pula Oracle menggunakan PL-SQL yang merupakan ekstensi eksklusif untuk mereka saja. Namun, perintah SQL standar seperti "Select", "Insert", "Update", "Delete", "Create", dan "Drop" dapat digunakan untuk menyelesaikan hampir semua hal yang perlu dilakukan dengan database.
+
+Contoh perintah DCL meliputi:
+
+HIBAH untuk mengizinkan pengguna tertentu melakukan tugas tertentu.
+REVOKE untuk menghapus aksesibilitas pengguna ke objek database.
+Operasi yang hak istimewanya dapat diberikan atau dicabut dari pengguna atau peran berlaku untuk bahasa definisi Data (DDL) dan bahasa manipulasi Data (DML), dan mungkin termasuk CONNECT , SELECT , INSERT , UPDATE, DELETE , EXECUTE , dan PENGGUNAAN .
+
+
+Isi
+1	Microsoft SQL Server
+1.1	Contoh
+2	Basis Data Oracle
+2.1	Contoh
+2.2	Pernyataan Kontrol Transaksi di Oracle
+3	server MySQL
+3.1	Contoh
+4	Lihat juga
+5	Referensi
+Microsoft SQL Server 
+Sesuai Microsoft SQL server ada empat kelompok Perintah SQL. (MSSQL)
+
+Bahasa Manipulasi Data (DML)
+Bahasa Definisi Data (DDL)
+Bahasa Kontrol Data (DCL [2] )
+Bahasa Kontrol Transaksi (TCL)
+Perintah DCL digunakan untuk kontrol akses dan manajemen izin untuk pengguna dalam database. Dengan mereka kami dapat dengan mudah mengizinkan atau menolak beberapa tindakan untuk pengguna pada tabel atau catatan (keamanan tingkat baris).
+
+Perintah DCL adalah:
+
+MENGANUGERAHKAN
+Kami dapat memberikan izin tertentu untuk tabel (dan objek lain) untuk grup/pengguna database tertentu.
+MEMBANTAH
+melarang izin tertentu dari grup/pengguna.
+MENARIK KEMBALI
+perintah ini menghilangkan izin dari grup/pengguna.
+Misalnya: GRANT dapat digunakan untuk memberikan hak istimewa kepada pengguna untuk melakukan SELECT, INSERT, UPDATE dan DELETE pada tabel tertentu atau beberapa tabel.
+
+Perintah REVOKE digunakan untuk mengambil kembali hak istimewa (default) atau mencabut perintah tertentu seperti UPDATE atau DELETE berdasarkan persyaratan.
+
+Contoh 
+ Berikan SELECT , INSERT , UPDATE , DELETE on Employee To User1     
+
+ Cabut INSERT On Employee To user1     
+
+ Tolak Pembaruan Pada Karyawan ke pengguna1     
+GRANT dalam kasus pertama kami memberikan hak istimewa kepada pengguna User1 untuk melakukan SELECT, INSERT, UPDATE dan DELETE pada tabel yang disebut karyawan.
+
+REVOKE dengan perintah ini kita dapat mengambil kembali privilege ke default, dalam hal ini kita mengambil kembali perintah INSERT pada tabel employee untuk user User1.
+
+DENY adalah perintah khusus. Kami dapat menyimpulkan bahwa setiap pengguna memiliki daftar hak istimewa yang ditolak atau diberikan sehingga perintah DENY ada untuk secara eksplisit melarang Anda beberapa hak istimewa pada objek database.:
+
+Database ORACLE 
+Oracle membagi perintah SQL ke tipe yang berbeda. Mereka.
+
+Pernyataan Bahasa Definisi Data (DDL)
+Pernyataan Bahasa Manipulasi Data (DML)
+Laporan Pengendalian Transaksi
+Pernyataan Kontrol Sesi
+Pernyataan Kontrol Sistem
+Pernyataan SQL Tertanam
+Untuk detail lihat Oracle- [3] TCL         
+
+Pernyataan bahasa definisi data (DDL) memungkinkan Anda melakukan tugas-tugas ini:
+
+Buat, ubah, dan jatuhkan objek skema
+Memberikan dan mencabut hak istimewa dan peran
+Menganalisis informasi pada tabel, indeks, atau cluster
+Tetapkan opsi audit
+Tambahkan komentar ke kamus data
+Jadi perintah DDL database Oracle menyertakan hak Hibah dan cabut yang sebenarnya merupakan bagian dari Bahasa kontrol Data di server Microsoft SQL.
+
+Sintaks untuk hibah dan pencabutan di Oracle:
+
+Contoh 
+GRANT  SELECT ,  INSERT ,  UPDATE ,  DELETE  PADA  db1 . Karyawan  KE  pengguna1 ;
+
+REVOKE  SELECT ,  INSERT ,  UPDATE ,  DELETE  PADA  db1 . Karyawan  DARI  user1 ;
+Pernyataan Kontrol Transaksi di Oracle 
+Pernyataan kontrol transaksi mengelola perubahan yang dibuat oleh pernyataan DML. Pernyataan pengendalian transaksi adalah:
+
+MELAKUKAN
+KEMBALI
+SAVEPOINT
+SET TRANSAKSI
+atur batasan
+Server MySQL 
+Server MySQL mereka membagi pernyataan SQL menjadi berbagai jenis pernyataan
+
+Pernyataan Definisi Data
+Pernyataan Manipulasi Data
+Pernyataan Transaksional dan Penguncian
+Pernyataan Replikasi
+Pernyataan yang Disiapkan
+Sintaks Pernyataan Majemuk
+Pernyataan Administrasi Basis Data
+Pernyataan Utilitas
+Untuk detail lihat pernyataan Transaksi MySQL [4]
+
+Sintaks hibah, pencabutan adalah sebagai bagian dari pernyataan administrasi DatabaseàSistem Manajemen Akun.
+
+Pernyataan GRANT memungkinkan administrator sistem untuk memberikan hak istimewa dan peran, yang dapat diberikan ke akun dan peran pengguna. Pembatasan sintaks ini berlaku:
+
+GRANT tidak dapat mencampur pemberian hak istimewa dan peran dalam pernyataan yang sama. Pernyataan GRANT yang diberikan harus memberikan hak istimewa atau peran.
+Klausa ON membedakan apakah pernyataan memberikan hak istimewa atau peran:
+Dengan ON, pernyataan memberikan hak istimewa
+Tanpa ON, pernyataan memberikan peran.
+Diizinkan untuk menetapkan hak istimewa dan peran ke akun, tetapi Anda harus menggunakan pernyataan GRANT terpisah, masing-masing dengan sintaks yang sesuai dengan apa yang akan diberikan.
+Pernyataan REVOKE memungkinkan administrator sistem untuk mencabut hak istimewa dan peran, yang dapat dicabut dari akun dan peran pengguna.
+
+Contoh 
+cabut  INSERT  ON  * . *  DARI  'jeffrey' @'localhost' ;
+
+cabut ' role1  ' ,  'role2'  DARI  'user1' @'localhost' ,  'user2' @'localhost' ;
+
+cabut  PILIH  PADA  dunia . *  DARI  'peran3' ;
+
+HIBAH  SEMUA  DI  db1 . *  UNTUK  'jeffrey' @'localhost' ;
+
+HIBAH ' role1  ' ,  'role2'  KE  'user1' @'localhost' ,  'user2' @'localhost' ;
+
+HIBAH  PILIH  PADA  dunia . *  UNTUK  'peran3' ;
+Di PostgreSQL , mengeksekusi DCL bersifat transaksional , dan dapat dibatalkan.
+
+Grant dan Revoke adalah perintah SQL yang digunakan untuk mengontrol hak istimewa yang diberikan kepada pengguna dalam Database
+
+SQLite tidak memiliki perintah DCL karena tidak memiliki nama pengguna atau login. Sebaliknya, SQLite bergantung pada izin sistem file untuk menentukan siapa yang dapat membuka dan mengakses database.

@@ -1,0 +1,130 @@
+Tutorial Dasar PostgreSQL
+Pertama, Anda akan mempelajari cara membuat kueri data dari satu tabel menggunakan teknik kueri data dasar, termasuk memilih data, mengurutkan kumpulan hasil, dan memfilter baris. Kemudian, Anda akan mempelajari tentang kueri tingkat lanjut seperti menggabungkan beberapa tabel, menggunakan operasi yang ditetapkan, dan membuat subkueri. Terakhir, Anda akan mempelajari cara mengelola tabel database, seperti membuat tabel baru atau memodifikasi struktur tabel yang sudah ada.
+
+Bagian 1. Meminta Data
+Pilih  – menunjukkan kepada Anda cara membuat kueri data dari satu tabel.
+Alias ​​kolom – pelajari cara menetapkan nama sementara ke kolom atau ekspresi dalam kueri.
+Order By – memandu Anda tentang cara mengurutkan kumpulan hasil yang dikembalikan dari kueri.
+Select Distinct  – memberi Anda klausa yang menghapus baris duplikat di kumpulan hasil.
+Bagian 2. Memfilter Data
+Di mana  – memfilter baris berdasarkan kondisi tertentu.
+Batas  – dapatkan subset baris yang dihasilkan oleh kueri.
+Ambil – membatasi jumlah baris yang dikembalikan oleh kueri.
+Dalam  – pilih data yang cocok dengan nilai apa pun dalam daftar nilai.
+Antara  – pilih data yang merupakan rentang nilai.
+Suka  – memfilter data berdasarkan pencocokan pola.
+Is Null – memeriksa apakah suatu nilai null atau tidak.
+Bagian 3. Menggabungkan Beberapa Tabel
+Bergabung – menunjukkan gambaran singkat tentang bergabung di PostgreSQL.
+Alias ​​tabel – menjelaskan cara menggunakan alias tabel dalam kueri.
+Inner Join  – pilih baris dari satu tabel yang memiliki baris yang sesuai di tabel lain.
+Gabung Kiri  – pilih baris dari satu tabel yang mungkin atau mungkin tidak memiliki baris yang sesuai di tabel lain.
+Self-join – menggabungkan tabel dengan dirinya sendiri dengan membandingkan tabel dengan dirinya sendiri.
+Full Outer Join – gunakan full join untuk menemukan baris dalam tabel yang tidak memiliki baris yang cocok di tabel lain.
+Cross Join – menghasilkan produk Cartesian dari baris dalam dua atau lebih tabel.
+Gabung Alami – gabungkan dua atau lebih tabel menggunakan kondisi gabungan implisit berdasarkan nama kolom umum dalam tabel gabungan.
+Bagian 4. Pengelompokan Data
+Group By  – membagi baris menjadi beberapa grup dan menerapkan fungsi agregat pada masing-masing.
+Memiliki  – menerapkan kondisi ke grup.
+Bagian 5. Atur Operasi
+Union  – menggabungkan kumpulan hasil dari beberapa kueri menjadi satu kumpulan hasil.
+Intersect – menggabungkan kumpulan hasil dari dua kueri atau lebih dan mengembalikan kumpulan hasil tunggal yang barisnya muncul di kedua kumpulan hasil.
+Kecuali – mengembalikan baris dalam kueri pertama yang tidak muncul di output kueri kedua.
+Bagian 6. Mengelompokkan set, Kubus, dan Rollup
+Kumpulan Pengelompokan   – menghasilkan beberapa kumpulan pengelompokan dalam pelaporan.
+Kubus – menentukan beberapa set pengelompokan yang mencakup semua kemungkinan kombinasi dimensi.
+Rollup – menghasilkan laporan yang berisi total dan subtotal.
+Bagian 7. Subkueri
+Subquery – menulis kueri yang bersarang di dalam kueri lain.
+APAPUN   – mengambil data dengan membandingkan nilai dengan sekumpulan nilai yang dikembalikan oleh subquery.
+SEMUA – data kueri dengan membandingkan nilai dengan daftar nilai yang dikembalikan oleh subkueri.
+ADA   – periksa keberadaan baris yang dikembalikan oleh subquery.
+Bagian 8. Ekspresi Tabel Umum
+PostgreSQL CTE – memperkenalkan Anda pada ekspresi tabel umum atau CTE PostgreSQL.
+Kueri rekursif menggunakan CTE – diskusikan kueri rekursif dan pelajari cara menerapkannya dalam berbagai konteks.
+Bagian 9. Memodifikasi Data
+Di bagian ini, Anda akan mempelajari cara menyisipkan data ke dalam tabel dengan INSERT pernyataan, memodifikasi data yang ada dengan  UPDATEpernyataan, dan menghapus data dengan DELETEpernyataan. Selain itu, Anda mempelajari cara menggunakan pernyataan upsert untuk menggabungkan data.
+
+Sisipkan – memandu Anda tentang cara menyisipkan satu baris ke dalam tabel.
+Sisipkan beberapa baris – menunjukkan cara menyisipkan beberapa baris ke dalam tabel.
+Perbarui – memperbarui data yang ada dalam sebuah tabel.
+Perbarui gabung – perbarui nilai dalam tabel berdasarkan nilai di tabel lain.
+Hapus – menghapus data dalam tabel.
+Upsert – menyisipkan atau memperbarui data jika baris baru sudah ada di tabel.
+Bagian 10. Transaksi
+Transaksi PostgreSQL – menunjukkan cara menangani transaksi di PostgreSQL menggunakan pernyataan BEGIN, COMMIT, dan ROLLBACK.
+Bagian 11. Impor & Ekspor Data
+Anda akan mempelajari cara mengimpor dan mengekspor data PostgreSQL dari dan ke format file CSV menggunakan perintah salin.
+
+Impor file CSV ke dalam Tabel – menunjukkan cara mengimpor file CSV ke dalam tabel.
+Ekspor Tabel PostgreSQL ke file CSV – menunjukkan cara mengekspor tabel ke file CSV.
+Bagian 12. Mengelola Tabel
+Di bagian ini, Anda akan mulai menjelajahi tipe data PostgreSQL dan menunjukkan cara membuat tabel baru dan memodifikasi struktur tabel yang ada.
+
+Tipe data  – mencakup tipe data PostgreSQL yang paling umum digunakan.
+Buat tabel – memandu Anda tentang cara membuat tabel baru di database.
+Pilih Ke &  Buat tabel sebagai – menunjukkan cara membuat tabel baru dari kumpulan hasil kueri.
+Kolom kenaikan otomatis dengan SERIAL – menggunakan SERIAL untuk menambahkan kolom kenaikan otomatis ke tabel.
+Urutan – memperkenalkan Anda pada urutan dan menjelaskan cara menggunakan urutan untuk menghasilkan urutan angka.
+Kolom identitas – menunjukkan cara menggunakan kolom identitas.
+Alter table – memodifikasi struktur tabel yang sudah ada.
+Rename table – mengubah nama tabel menjadi yang baru.
+Tambahkan kolom  – menunjukkan cara menggunakan menambahkan satu atau beberapa kolom ke tabel yang ada.
+Jatuhkan kolom – mendemonstrasikan cara menjatuhkan kolom tabel.
+Ubah tipe data kolom – menunjukkan cara mengubah data kolom.
+Ganti nama kolom – mengilustrasikan cara mengganti nama satu atau beberapa kolom tabel.
+Drop table – menghapus tabel yang ada dan semua objek dependennya.
+Pangkas tabel – hapus semua data dalam tabel besar dengan cepat dan efisien.
+Tabel sementara – menunjukkan cara menggunakan tabel sementara.
+Menyalin tabel – menunjukkan cara menyalin tabel ke tabel baru.
+Bagian 13. Memahami Batasan PostgreSQL
+Kunci utama – mengilustrasikan cara menentukan kunci utama saat membuat tabel atau menambahkan kunci utama ke tabel yang sudah ada.
+Kunci asing – menunjukkan cara mendefinisikan batasan kunci asing saat membuat tabel baru atau menambahkan batasan kunci asing untuk tabel yang ada.
+CHECK constraint – tambahkan logika untuk memeriksa nilai berdasarkan ekspresi Boolean.
+Batasan UNIK – pastikan bahwa nilai dalam kolom atau grup kolom unik di seluruh tabel.
+Batasan NOT NULL – pastikan nilai dalam kolom tidak NULL.
+Bagian 14. Kedalaman Tipe Data PostgreSQL
+Boolean  – simpan TRUE dan  FALSE nilai dengan tipe data Boolean.
+CHAR, VARCHAR, dan TEXT  – pelajari cara menggunakan berbagai jenis karakter termasuk CHAR, VARCHAR, dan TEXT.
+NUMERIK  – menunjukkan cara menggunakan NUMERICtipe untuk menyimpan nilai yang membutuhkan presisi.
+Integer – memperkenalkan Anda ke berbagai tipe integer di PostgreSQL termasuk SMALLINT, INTdan BIGINT.
+DATE   – memperkenalkan DATEtipe data untuk menyimpan nilai tanggal.
+Timestamp  – pahami tipe data timestamp dengan cepat.
+Interval – menunjukkan cara menggunakan tipe data interval untuk menangani periode waktu secara efektif.
+TIME – gunakan TIMEtipe data untuk mengatur waktu nilai hari.
+UUID – memandu Anda tentang cara menggunakan UUIDtipe data dan cara menghasilkan UUIDnilai menggunakan modul yang disediakan.
+Array – menunjukkan cara bekerja dengan array dan memperkenalkan beberapa fungsi praktis untuk manipulasi array.
+hstore – memperkenalkan Anda pada tipe data yang merupakan kumpulan pasangan kunci/nilai yang disimpan dalam satu nilai di PostgreSQL.
+JSON – mengilustrasikan cara bekerja dengan tipe data JSON dan menunjukkan cara menggunakan beberapa operator dan fungsi JSON yang paling penting.
+Tipe data yang ditentukan pengguna – menunjukkan cara menggunakan pernyataan CREATE DOMAINdan CREATE TYPEuntuk membuat tipe data yang ditentukan pengguna.
+Bagian 15. Ekspresi & Operator Bersyarat
+CASE – menunjukkan cara membentuk kueri bersyarat dengan  CASE ekspresi.
+COALESCE – mengembalikan argumen non-null pertama. Anda dapat menggunakannya untuk mengganti  NULL dengan nilai default.
+NULLIF – kembali  NULL jika argumen pertama sama dengan argumen kedua.
+CAST – mengkonversi dari satu tipe data ke tipe data lain misalnya, dari string menjadi integer, dari string menjadi tanggal.
+Bagian 16. Utilitas PostgreSQL
+perintah psql – menunjukkan perintah psql paling umum yang membantu Anda berinteraksi dengan psql lebih cepat dan lebih efektif.
+Bagian 17. Resep PostgreSQL
+Cara membandingkan dua tabel – menjelaskan cara membandingkan data dalam dua tabel dalam database.
+Cara menghapus baris duplikat di PostgreSQL – menunjukkan kepada Anda berbagai cara untuk menghapus baris duplikat dari tabel.
+Cara menghasilkan angka acak dalam rentang  – mengilustrasikan cara menghasilkan angka acak dalam rentang tertentu.
+JELASKAN pernyataan – memandu Anda tentang cara menggunakan EXPLAINpernyataan untuk mengembalikan rencana eksekusi kueri.
+PostgreSQL vs. MySQL – bandingkan PostgreSQL dengan MySQL dalam hal fungsionalitas.
+Tutorial PostgreSQL Tingkat Lanjut
+Tutorial PostgreSQL lanjutan ini mencakup konsep lanjutan termasuk prosedur tersimpan, indeks, tampilan, pemicu, dan administrasi basis data.
+
+
+PostgreSQL PL/pgSQL
+Bagian prosedur tersimpan PostgreSQL ini menunjukkan kepada Anda langkah demi langkah cara mengembangkan fungsi yang ditentukan pengguna PostgreSQL menggunakan bahasa prosedural PL/pgSQL.
+
+Pemicu PostgreSQL
+Bagian ini memberi Anda konsep pemicu PostgreSQL dan menunjukkan cara mengelola pemicu di PostgreSQL.
+
+Tampilan PostgreSQL
+Kami akan memperkenalkan Anda pada konsep tampilan database dan menunjukkan kepada Anda cara mengelola tampilan seperti membuat, mengubah, dan menghapus tampilan dari database.
+
+Indeks PostgreSQL
+Indeks PostgreSQL adalah alat yang efektif untuk meningkatkan kinerja database. Indeks membantu server database menemukan baris tertentu jauh lebih cepat daripada yang bisa dilakukan tanpa indeks.
+
+Administrasi PostgreSQL
+Administrasi PostgreSQL mencakup aktivitas terpenting untuk server database PostgreSQL termasuk peran dan manajemen database, pencadangan, dan pemulihan.
