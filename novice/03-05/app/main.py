@@ -8,8 +8,7 @@ def index():
         host="localhost",
         database="contoh",
         user="postgres",
-        password="nurfaridah12345"
-        )
+        password="nurfaridah12345")
     curs = conn.cursor()
     if request.method == "POST":
         nama = request.form.get("nama")
@@ -20,10 +19,10 @@ def index():
         curs.close()
         conn.close()
     
-    #     print(20*"=")
-    #     print(nama)
-    #     print(detail)
-    #     print(20*"=")
+        # print(20*"=")
+        # print(nama)
+        # print(detail)
+        # print(20*"=")
 
     print(request.method)
     query = f"select * from buah"
@@ -32,7 +31,7 @@ def index():
     curs.close()
     conn.close()
     # data = ["apel", "pear", "anggur"]
-    return render_template("index.html", contex=data)
+    return render_template("index.html", context=data)
 
 if __name__ == "__main__":
     app.run()
