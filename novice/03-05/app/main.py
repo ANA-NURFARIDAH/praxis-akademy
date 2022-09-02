@@ -26,7 +26,12 @@ def index():
     #     print(20*"=")
 
     print(request.method)
-    data = ["apel", "pear", "anggur"]
+    query = f"select * from buah"
+    curs.execute(query)
+    data = curs.fetchall()
+    curs.close()
+    conn.close()
+    # data = ["apel", "pear", "anggur"]
     return render_template("index.html", contex=data)
 
 if __name__ == "__main__":
