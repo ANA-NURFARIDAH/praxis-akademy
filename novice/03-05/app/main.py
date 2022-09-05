@@ -45,7 +45,7 @@ def detail(buah_id):
     curs = conn.cursor()
     query = f"select * from buah where id = {buah_id}"
     curs.execute(query)
-    data = curs.fechtone()
+    data = curs.fetchone()
     curs.close()
     conn.close()
     print(data)
