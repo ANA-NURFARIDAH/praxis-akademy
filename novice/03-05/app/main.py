@@ -33,5 +33,24 @@ def index():
     # data = ["apel", "pear", "anggur"]
     return render_template("index.html", context=data)
 
+
+@app.route("/detail/<buah_id>")
+def detail(buah_id):
+    conn = psycopg2.connect(
+        host="localhost",
+        database="contoh",
+        user="postgres",
+        password="nurfaridah12345"
+    )
+    curs = conn.cursor()
+    query = f"select * from buah where id = {buah_id}"
+    curs.execute(query)
+    data = curs.fechtone()
+    curs.close()
+    conn.close()
+    print(data)
+    return ""
+    
+
 if __name__ == "__main__":
     app.run()
