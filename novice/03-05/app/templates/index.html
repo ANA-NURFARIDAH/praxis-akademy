@@ -43,7 +43,7 @@ tr:nth-child(even) {
             <tr>
                 <th>id</th>
                 <th>nama</th>
-                <th>detail</th>
+                <th>actions</th>
                <!--<th>detail</th>--> 
             </tr>
             {% for d in context %}
@@ -54,14 +54,13 @@ tr:nth-child(even) {
                     <a href="/detail/{{d[0]}}">
                         <button>detail</button>
                     <a>
-                    <a href="">
+                    <a href="/update/{{d[0]}}">
                         <button>update</button>
                     </a>
                     <a href="/delete/{{d[0]}}">
                         <button>delete</button>
                     </a>
                 </td>
-                <!-- <td>{{d[2]}}</td> -->
             </tr>
             {% endfor %}
         </table>
