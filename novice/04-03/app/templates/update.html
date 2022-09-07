@@ -7,16 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    halaman tugasku
+    <h3>halaman updating data</h3> 
     <form action="" method="post">
         <label for="">nama</label>
-        <input name="nama" value="{{context[1]}}" type="text">
-        <label for="">detail</label>
-        <input name="asal_kabupaten" value="{{context[2]}}" type="text">
-        <button type="submit">update</button>
-        <input name="blok_kamar" value="{{context[3]}}" type="text">
-        <button type="submit">update</button>
-        <input name="keterangan" value="{{context[4]}}" type="text">
+        <input name="nama" type="text" required>
+        <label for="">asal kabupaten</label>
+        <input name="asal_kabupaten" type="text" required>
+        <label for="">blok kamar</label>
+        <input name="blok_kamar" type="text" required>
+        <label for="">keterangan</label>
+        <input name="keterangan" type="text" required>
         <button type="submit">update</button>
     </form>
 </body>

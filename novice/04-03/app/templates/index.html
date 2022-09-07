@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
     <style>
+        
         table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -50,6 +51,8 @@ tr:nth-child(even) {
                 <th>asal_kabupaten</th>
                 <th>blok_kamar</th>
                 <th>keterangan</th>
+                <th>actions</th>
+
 
                <!--<th>detail</th>--> 
             </tr>
@@ -61,13 +64,13 @@ tr:nth-child(even) {
                 <td>{{d[3]}}</td>
                 <td>{{d[4]}}</td>
                 <td>
-                    <a href="/detail/{{d[1]}}">
+                    <a href="/detail/{{d[0]}}">
                         <button class="btn btn-info">detail</button>
                     <a>
-                    <a href="/update/{{d[2]}}">
+                    <a href="/update/{{d[0]}}">
                         <button class="btn btn-warning">update</button>
                     </a>
-                    <a href="/delete/{{d[3]}}">
+                    <a href="/delete/{{d[0]}}">
                         <button class="btn btn-danger">delete</button>
                     </a>
                 </td>
