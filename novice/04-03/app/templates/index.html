@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+    
+</head> 
+<body>
+    <div>
+        <h1> ini request </h1>
+        <form action="" method="post">
+            <label for="">nama</label>
+            <input name="nama" type="text" required>
+            <label for="">asal kabupaten</label>
+            <input name="asal_kabupaten" type="text" required>
+            <label for="">blok kamar</label>
+            <input name="blok_kamar" type="text" required>
+            <label for="">keterangan</label>
+            <input name="keterangan" type="text" required>
+            <button type="submit">kirim</button>
+
+        </form>
+        
+        <hr>
+        <h1 color="red">DATA SANTRI PUTRI PROGRAMMER PPQS</h1>
+        <br>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>nama</th>
+                <th>asal_kabupaten</th>
+                <th>blok_kamar</th>
+                <th>keterangan</th>
+
+               <!--<th>detail</th>--> 
+            </tr>
+            {% for d in context %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{d[1]}}</td>
+                <td>{{d[2]}}</td>
+                <td>{{d[3]}}</td>
+                <td>{{d[4]}}</td>
+                <td>
+                    <a href="/detail/{{d[1]}}">
+                        <button class="btn btn-info">detail</button>
+                    <a>
+                    <a href="/update/{{d[2]}}">
+                        <button class="btn btn-warning">update</button>
+                    </a>
+                    <a href="/delete/{{d[3]}}">
+                        <button class="btn btn-danger">delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+            
+    </div>
+ </body>
+</html>
