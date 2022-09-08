@@ -40,3 +40,43 @@ def delete(buah_id):
     curs.close()
     conn.close()
     return redirect ("/")
+
+def update(buah_id):
+    conn = psycopg2.connect(
+        host="localhost",
+        database="contoh",
+        user="postgres",
+        password="nurfaridah12345"
+    )
+    curs = conn.cursor()
+    if request.method == "POST":
+        nama = request.form.get("nama")
+        detail = request.form.get("detail")
+        query = f"update buah set nama='{nama}', detail='{detail}' where nama ='{nama}'"
+ 
+        curs.execute(query)
+        conn.commit()
+        return redirect("/")
+    query = f"select * from buah where id = {buah_id}"
+    curs.execute(query)
+    data = curs.fetchone()       
+    curs.close()
+    conn.close()
+    print (data)
+    return render_template("detail.html", context=data)
+
+def detail(buah_id):
+    conn = psycopg2.connect(
+        host="localhost",
+        database="contoh",
+        user="postgres",
+        password="nurfaridah12345"
+    )
+    curs = conn.cursor()
+    query = f"select * from buah where id = {buah_id}"
+    curs.execute(query)
+    data = curs.fetchone()       
+    curs.close()
+    conn.close()
+    print (data)
+    return render_template("detail.html", context=data)
