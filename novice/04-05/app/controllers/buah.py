@@ -1,5 +1,5 @@
 import psycopg2
-from flask import request, render_template
+from flask import request, render_template, redirect
 def index():
     conn = psycopg2.connect(
         host="localhost",
@@ -24,3 +24,19 @@ def index():
     conn.close()
     # data = ["apel", "pear", "anggur", "jeruk", "belimbing", "kelengkeng"]
     return render_template("index.html", context=data)
+
+
+def delete(buah_id):
+    conn = psycopg2.connect(
+        host="localhost",
+        database="contoh",
+        user="postgres",
+        password="nurfaridah12345"
+    )
+    curs = conn.cursor()
+    query = f"delete from buah where id = {buah_id}"
+    curs.execute(query)
+    conn.commit()        
+    curs.close()
+    conn.close()
+    return redirect ("/")
