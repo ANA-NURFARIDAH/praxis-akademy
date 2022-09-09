@@ -1,0 +1,2 @@
+# print("hello world")
+x  = int(input("Silahkan masukkan sebuah angka: "))
