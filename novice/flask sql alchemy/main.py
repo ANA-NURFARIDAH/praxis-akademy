@@ -24,6 +24,16 @@ def index():
     print(data)
     return render_template("index.html", context=data)
 
+def index():
+    if request.method == "POST":
+        userbaru = request.form.get("userbaru")
+        input = User(username=userbaru)
+        db.session.commit()
+        print(userbaru)
+    data = User.query.all()
+    print(data)
+    return render_template("index.html", context=data)
+
 if __name__ == "__main__":
     db.create_all()
     app.run()
