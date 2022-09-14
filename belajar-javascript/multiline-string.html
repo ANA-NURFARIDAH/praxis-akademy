@@ -8,16 +8,33 @@
 </head>
 <body>
     <script>
-        let multilineString = `
-        Nama saya adalah ana nurfaridah
-        hello world
-        slebewww
-        sabi lah
-        `;
 
-        document.writeln("<pre>");
-        document.writeln(multilineString);
-        document.writeln("</pre>");
+        const name = "ana nurfaridah";
+        const firstName = "ana";
+        const middleName = "nur";
+        const lastName = "faridah";
+        const template = `Name : ${firstName}  ${middleName} ${lastName}`;
+        const lama = "Name : " + firstName + " " + middleName + " " + lastName;
+
+        console.info(template);
+
+        const nilai = 50;
+        const template2 = `Name : ${name}, Lulus : ${nilai > 70}`;
+
+        console.info(template2);
+
+        const multiline = `
+
+        // let multilineString = `
+        // Nama saya adalah ana nurfaridah
+        // hello world
+        // slebewww
+        // sabi lah
+        // `;
+
+        // document.writeln("<pre>");
+        // document.writeln(multilineString);
+        // document.writeln("</pre>");
     </script>
 </body>
 </html>
