@@ -8,23 +8,37 @@
 </head>
 <body>
     <script>
-    // const orang = {}; // kalo object, pakainya kurung kurawal
+    const orang = {}; // kalo object, pakainya kurung kurawal
 
-    // // Menambah atau Mengubah
-    // orang["nama"] = "Eko Kurniawan";
-    // orang["alamat"] = "Indonesia";
-    // orang["umur"] = 30;
+    // Menambah atau Mengubah
+    orang["nama lengkap"] = "Eko Kurniawan",
+    orang["jenis kelamin"] = "perempuan",
+    orang["alamat"] = "Indonesia",
+    orang["umur"] = 30
 
     // // Menghapus
     // delete orang["umur"];
 
     // membuat object dengan properties
-    const orang = {
-        nama: "Eko Kurniawan",
-        alamat: "Indonesia",
-        umur: 30
-    };
+    // const manusia = {
+    // 'nama lengkap': "Eko Kurniawan",
+    // "jenis kelamin" : "perempuan",
+    // alamat: "Indonesia",
+    // umur: 30
+    // };
 
+    // ubah property / attribute
+    let person = {}
+    person["nama"] = "Eko Kurniawan";
+    person["no telp"] = "08xxxx";
+    person["alamat"] = "Indonesia";
+    person["umur"] = 30;
+
+    console.info(`Nama : ${orang["nama lengkap"]}`);
+    console.info(`Jenis Kelamin : ${orang["jenis kelamin"]}`); // hasil di console undefined
+    console.info(`Alamat : ${orang.alamat}`);
+    console.info(`Umur : ${orang.umur}`);
+    console.table(person);
     console.table(orang);
     </script>
 </body>
