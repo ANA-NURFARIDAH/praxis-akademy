@@ -1,0 +1,22 @@
+body{
+    background-image: url("../logo\ html.png")
+}
+
+h1{
+    color: yellow;
+}
+
+#judul_orange { 
+    color:orange;
+}
+
+.tebal_orange {
+    color:orange;
+    background-color: rgba(255, 99, 71, 1);
+    font-weight: 600;
+    font-size:26px;
+}
+
+/* .haloguys {
+    color: darkred;
+} */
