@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const person = {
+        //     name: "Eko",
+        //     sayHello: function (name){
+        //         alert(`Hello ${name}`);
+        //     }
+        // };
+
+        const person = {
+            name: "Eko",
+            sayHello: (name) => alert(`Hello ${name}`)
+        };
+        person.sayHello('Budi');
+
+        const orang = {
+            name: "Eko"
+        };
+
+        orang.sayHello = function (name){
+            alert(`Hello ${name}`);
+        }
+        orang.sayHello = (name) => alert(`Hello ${name}`)
+
+        orang.sayHello('Budi');
+        
+    </script>
+</body>
+</html>
