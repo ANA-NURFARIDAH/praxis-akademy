@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //membuat function
+        // function selamatPagi(){
+        //     document.writeln("<P>Selamat Pagi Semua</p>");
+        // }
+
+        //cara memanggil function
+        // selamatPagi();
+
+        // function sayHello(){
+        //     document.writeln("<p>assalamu'alaikum");
+        // }
+        // sayaHello();
+        //     document.writeln("br>ini pargaraf pemisah<br><br>");
+
+        let firstName2 = prompt("Siapa Nama Depanmu?");
+        let asal       = prompt("Dimana Alamatmu?");
+
+            function sayHello(firstName, lastName, asal){
+                document.writeln(`<p>Assalamu'alaikum Wr. Wb, nama saya <b>${firstName}${lastName}</b>asal 
+                    dari ${asal}</p>`);
+            }
+            
+        sayHello("ulul", "albab", "klaten");
+        document.writeln("<br>Ini paragraf pemisah<br><br>");
+        sayHello(firstName2, "rahmatullah", asal);
+        document.writeln("<br> Ini paragraf pemisah lagi<br><br>");
+        sayHello("Yezzied", "Falikha", "Solo");
+        
+    </script>
+</body>
+</html>

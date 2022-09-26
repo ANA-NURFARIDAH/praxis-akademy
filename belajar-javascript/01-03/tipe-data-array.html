@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arrayNama = ["Eko", "Kurniawan", "Khannedy"];
+
+        console.table(arrayNama);
+
+        console.info(arrayNama[0]);
+        console.info(arrayNama[1]);
+        console.info(arrayNama[2]);
+
+        let siswa =[]
+        siswa[0] = 'Salma';
+        siswa[2] = 'Sule';
+        siswa.push('Fitri');
+        siswa.push('Juleha');
+        siswa.push('A1', 'A2', 'A3');
+        siswa[2] = 'Andre';
+        siswa[20] = 'Mis';
+        delete siswa [4]
+        siswa.sort(); // untuk mengurutkan secara abjad a-z
+        siswa.reverse(); // untuk mengurutkan secara abjad z-a
+        siswa[siswa.length] = 'data baru';
+        console.table(siswa);
+        console.info(siswa.length); // untuk menghitung jumlah array
+    </script>
+</body>
+</html>

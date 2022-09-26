@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // arrow function ditandai dengan adanya tanda panah dan mirip anonymous
+        // const sayHello = (name) => {
+        //     const say = `Hello ${name}`;
+        //     console.info(say);
+        // }
+
+
+        // cara lain manggil arrow, ini tanpa block harus sebaris
+        // const sayHello = (name) => console.info(`Hello ${name}`);
+
+        // ini contoh tanpa kurung di name
+        // const sayHello = name => console.info(`Hello ${name}`);
+        // sayHello("Eko"); 
+        // sayHello itu juga function
+
+
+        // ini contoh function dengan cara dipanggil dengan return
+        // const sum = (firts, second) => {
+        //     return firts + second;
+        // }
+
+
+        // ini cara function dengan cara dipanggil dengan cara mudah atau satu baris saja
+        // const sum = (first, second) => first + second;
+
+        // console.info(sum(100, 100));
+
+        function giveMeName(callback){
+            callback("Eko");
+        }
+
+        // Anonymous Function
+        // giveMeName(function (name){
+        //      condsole.info(`Hello ${name}`);
+        // })
+
+        // Arrow Function
+        giveMeName(name => console.info(`Hello ${name}`));
+    </script>
+</body>
+</html>
