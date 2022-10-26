@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="putHere"></h1>
+    <script>
+
+        const ajax = new XMLHttpRequest();
+        ajax.open("GET", "api/hello.json");
+
+        ajax.addEventListener("load", function (){ //gunanya untuk mendengarkan saja
+            const json = JSON.parse(ajax.responseText);
+
+            const header = document.getElementById("putHere"); //ini manggil yang di id atas
+            header.textContent = json.response;
+        });
+        ajax.send();  //ini untuk mengirim
+    </script>
+</body>
+</html>

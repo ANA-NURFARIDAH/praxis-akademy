@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Register</h1>
+    <form>
+        <label for="name">Nama Lengkap:
+            <input type="text" id="name" name="name">
+        </label>
+        <br>
+        <label for="no_telp">No Telp:
+            <input type="number" id="no_telp" name="no_telp">
+            <br>
+        </label>
+        <label for="email">Email:
+            <input type="text" id="email" name="email">
+            <br>
+            <label for="password">Password:
+                <input type="password" id="password" name="password">
+                <br>
+                <label for="alamat">Alamat:
+                    <input type="text" id="alamat" value="alamat">
+                </label>
+                <br>
+                <label for="tanggal_lahir">Tanggal Lahir:
+                    <input type="date" id="tanggal_lahir" name="tanggal_lahir">
+                    <br>
+                    <label for="upload_foto">Upload Foto:
+                        <input type="file" id="upload_foto" name="upload_foto">
+                        <br>
+                    <input type="button" id="register" value="Register" </form>
+                    <h1 id="putHere"></h1>
+                    <script>
+
+                        function doLogin() {
+                            const ajax = new XMLHttpRequest();
+                            ajax.open("POST", "https://webhook.site/07999061-eff3-47eb-aaa3-a72ee4e42f21");     
+                            // ajax.open("POST", "https://webhook.site/d6313ec6-e320-4ede-81de-bd41762bb11d");
+                            ajax.onload = function () {
+                                const response = document.getElementById("putHere");
+                                response.innerText = ajax.responseText;
+                            }
+
+                            const form = new FormData();
+                            form.append("name", document.getElementById("name").value);
+                            form.append("no_telp", document.getElementById("no_telp").value);
+                            form.append("email", document.getElementById("email").value);
+                            form.append("password", document.getElementById("password").value);
+                            form.append("alamat", document.getElementById("alamat").value);
+                            form.append("tanggal_lahir", document.getElementById("tanggal_lahir").value);
+                            form.append("upload_foto", document.getElementById("upload_foto").value);
+
+
+                            // const files = document.getElementById("profile").files;
+                            // const firstFile = files.item(0);
+                            // form.append("profile", firstFile);
+                            form.append("upload_foto", document.getElementById("upload_foto").files.item(0));
+
+                            ajax.send(form);
+                        }
+
+                        document.getElementById("register").onclick = doLogin;
+                    </script>
+</body>
+
+</html>

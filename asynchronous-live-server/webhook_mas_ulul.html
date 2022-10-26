@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Send File</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-3">
+		<h1>Register</h1>
+		<form class="row">
+			<div class="mb-3 col-md-6">
+			    <label class="form-label">Nama Lengkap</label>
+			    <input type="text" class="form-control" id="name">
+			</div>
+			<div class="mb-3 col-md-6">
+			    <label class="form-label">No Telp</label>
+			    <input type="number" class="form-control" id="telp">
+			</div>
+			<div class="mb-3 col-md-6">
+			    <label class="form-label">Email</label>
+			    <input type="email" class="form-control" id="email">
+			</div>
+			<div class="mb-3 col-md-6">
+			    <label class="form-label">Password</label>
+			    <input type="password" class="form-control" id="password">
+			</div>
+			<div class="mb-3 col-md-6">
+			    <label class="form-label">Alamat</label>
+			    <textarea name="alamat" class="form-control" id="address"></textarea>
+			</div>
+			<div class="mb-3 col-md-6">
+			    <label class="form-label">Tanggal Lahir</label>
+			    <input type="date" class="form-control" id="tgl">
+			</div>
+			<div class="mb-3 col-md-6">
+			    <label class="form-label">Foto</label>
+			    <input type="file" class="form-control" id="foto">
+			</div>
+			<div class="mb-3 col-md-6">
+			    <label class="form-label">Syarat dan Ketentuan</label><br>
+			    <input type="submit" class="btn btn-primary col-12" id="register" value="Daftar">
+			</div>
+		</form>
+		<h1 id="putHere"></h1>
+	</div>
+<script>
+
+    function doLogin() {alert("ok");
+        const ajax = new XMLHttpRequest();
+        ajax.open("POST", "https://webhook.site/07999061-eff3-47eb-aaa3-a72ee4e42f21");
+        ajax.onload = function () {
+            const response = document.getElementById("putHere");
+            response.innerText = ajax.responseText;
+        }
+        
+        const form = new FormData();
+        form.append("name", document.getElementById("name").value);
+        form.append("telp", document.getElementById("telp").value);
+        form.append("email", document.getElementById("email").value);
+        form.append("password", document.getElementById("password").value);
+        form.append("address", document.getElementById("address").value);
+        form.append("tgl", document.getElementById("tgl").value);
+        form.append("foto", document.getElementById("foto").files.item(0));
+
+        ajax.send(form);
+    }
+
+    document.getElementById("register").onsubmit = doLogin;
+
+</script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Tutorial Google Map - Petani Kode</title>
+
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        function initialize() {
+            var propertiPeta = {
+                center: new google.maps.LatLng(-8.5830695, 116.3202515),
+                zoom: 9,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+
+            // membuat Marker
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(-8.5830695, 116.3202515),
+                map: peta
+            });
+
+        }
+
+        // event jendela di-load  
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+</head>
+
+<body>
+
+    <div id="googleMap" style="width:100%;height:380px;"></div>
+
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Membuat Peta</title>
+
+    <!-- leaflet css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+
+    <!-- bootstrap cdn  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+        /* ukuran peta */
+        #mapid {
+            height: 100%;
+        }
+        .jumbotron{
+            height: 100%;
+            border-radius: 0;
+        }
+        body{
+            background-color: #ebe7e1;
+        }
+    </style>
+</head>
+
+<body>
+     <div class="row"> <!-- class row digunakan sebelum membuat column  -->
+        <div class="col-4"> <!-- ukuruan layar dengan bootstrap adalah 12 kolom, bagian kiri dibuat sebesar 4 kolom-->
+            <div class="jumbotron"> <!-- untuk membuat semacam container berwarna abu -->
+            <h1>Add Location</h1>
+            <hr>
+                <form action="proses.js" method="post">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Latitude, Longitude</label>
+                        <input type="text" class="form-control" id="latlong" name="latlong">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Nama Tempat</label>
+                        <input type="text" class="form-control" name="nama_tempat">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Kategori Tempat</label>
+                        <select class="form-control" name="kategori" id="">
+                            <option value="">--Kategori Tempat--</option>
+                            <option value="rumah makan">Rumah Makan</option>
+                            <option value="pom bensin">Pom Bensin</option>
+                            <option value="Fasilitas Umum">Fasilitas Umum</option>
+                            <option value="Pasar/Mall">Pasar/Mall</option>
+                            <option value="rumah sakit">Rumah Sakit</option>
+                            <option value="Sekolah">Sekolah</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Keterangan</label>
+                        <textarea class="form-control" name="keterangan" cols="30" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-8"> <!-- ukuruan layar dengan bootstrap adalah 12 kolom, bagian kiri dibuat sebesar 4 kolom-->
+            <!-- peta akan ditampilkan dengan id = mapid -->
+            <div id="mapid"></div>
+        </div>
+    </div>
+
+
+
+    <!-- leaflet js  -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <script>
+        // set lokasi latitude dan longitude, lokasinya kota palembang 
+        var mymap = L.map('mapid').setView([-2.9547949, 104.6929233], 13);   
+        //setting maps menggunakan api mapbox bukan google maps, daftar dan dapatkan token      
+        L.tileLayer(
+            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibmFiaWxjaGVuIiwiYSI6ImNrOWZzeXh5bzA1eTQzZGxpZTQ0cjIxZ2UifQ.1YMI-9pZhxALpQ_7x2MxHw', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 20,
+                id: 'mapbox/streets-v11', //menggunakan peta model streets-v11 kalian bisa melihat jenis-jenis peta lainnnya di web resmi mapbox
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'your.mapbox.access.token'
+            }).addTo(mymap);
+
+
+        // buat variabel berisi fungsi L.popup 
+        var popup = L.popup();
+
+        // buat fungsi popup saat map diklik
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("koordinatnya adalah " + e.latlng
+                    .toString()
+                    ) //set isi konten yang ingin ditampilkan, kali ini kita akan menampilkan latitude dan longitude
+                .openOn(mymap);
+
+            document.getElementById('latlong').value = e.latlng //value pada form latitde, longitude akan berganti secara otomatis
+        }
+        mymap.on('click', onMapClick); //jalankan fungsi
+
+        
+
+
+
+    </script>
+</body>
+
+</html>
+
+<body>
+    <div class="container mt-3">
+        <h1>Aplikasi Pengambilan Data Cuaca (Open Wheater Map)</h1>
+        <br>
+        <form class="row">
+            <div class="mb-3 col-md-6">
+                <label class="form-label">Latitude</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="mb-3 col-md-6">
+                <label class="form-label">Longitude</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="mb-3 col-md-6">
+                <label class="form-label">APP ID Open Wheater Map</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <div class="mb-3 col-md-6">
+                <label class="form-label">Lat & Long ambil dari google maps</label><br>
+                <input type="button" class="btn btn-primary col-12" id="register" value="Ambil Data">
+            </div>
+        </form>
+        <h1 id="putHere"></h1>
+    </div>
+
+    <body>
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>quiz8 Wheater</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+                crossorigin="anonymous">
+        </head>
+
+        <body>
+            <div class="container mt-3">
+                <h1>Data Cuaca Daerah : <span id="name_city"></span></h1>
+                <table class="table table-hover table-bordered table-striped">
+                    <thead>
+                        <th>No</th>
+                        <th>Date Time</th>
+                        <th>Wheater</th>
+                        <th>Wheater Desc</th>
+                        <th>Wind Spend</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>Rain</th>
+                        <th>Clouds</th>
+                    </thead>
+                    <tbody id="myTbody">
+                    </tbody>
+                </table>
+            </div>
+
+            <script>
+
+                function getWeather() {
+                    const request = new Request("https://api.openweathermap.org/data/2.5/forecast?lat=-7.7214217&lon=110.4138864&appid=ab0072a2ae28523c5680187db1669d43", {
+                        method: "GET"
+                    });
+                    const response = fetch(request);
+                    return response.then((response) => response.json());
+                }
+
+                async function getResponseWeather() {
+                    try {
+                        return await getWeather();
+                    } catch (e) {
+                        return "Data Not Found";
+                    } finally { }
+                }
+
+                getResponseWeather()
+                    .then(function (data) {
+                        console.info(data);
+                        console.info(data.city);
+                        console.info(data.city.name);
+                        console.info(data.list);
+
+                        document.getElementById("name_city").textContent = data.city.name;
+
+                        let no = 1;
+
+                        let text = "<table border='1'>"
+                        for (let v of data.list) {
+                            console.info(v);
+                            if (typeof v.rain !== 'undefined') {
+                                var rain = Object.values(v.rain)[0];
+                            } else {
+                                var rain = "no data";
+                            }
+
+                            console.info(rain);
+                            // for (var i = 1; i < 1; i++) {
+                            //     console.info(i)};
+                            text += "<tr>"
+                            text += "<td>" + no + "</td>";  //no
+                            text += "<td>" + v.dt_txt + "</td>";
+                            text += "<td>" + v.weather[0].main + "</td>"; //
+                            text += "<td>" + v.weather[0].description + "</td>"; //desc
+                            text += "<td>" + v.wind.speed + "</td>";
+                            text += "<td>" + v.main.temp + "</td>";
+                            text += "<td>" + v.main.humidity + "</td>";
+                            text += "<td>" + (rain) + "</td>"; //
+                            text += "<td>" + v.clouds.all + "</td>";
+                            text += "</tr>"
+
+                            text += "</table>"
+
+                            no++;
+                        }
+
+                        document.getElementById('myTbody').innerHTML = text;
+
+                    }
+                    )
+
+
+            </script>
+        </body>
+
+        </html>
